@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjetoMinsait.Data.Map;
 using ProjetoMinsait.Models;
 
 namespace ProjetoMinsait.Data
@@ -15,7 +16,9 @@ namespace ProjetoMinsait.Data
         public DbSet<Onibus> Onibus { get; set; }
         public DbSet<Passagem> passagem { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new MotoristaMap());
             base.OnModelCreating(modelBuilder);
         }
     }
