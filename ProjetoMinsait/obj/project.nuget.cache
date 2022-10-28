@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ryLQ0vHvopHPd4F7t/k71Wzf/pOqbrH77xfr+atr73MMtz2rVvUrqeSEh9ycDF7LbxAwnLKpbEYj9/UpRTN/4w==",
+  "dgSpecHash": "nyD6OE9BP9hZLwIoQZxtphz5E/Pd0xP75et6EIS69UxtAb5c/I20a060+8eerh4hMnjdh3uORGZqsPVF4w6gIQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\romen\\OneDrive\\Área de Trabalho\\Indra\\ProjetoMinsait\\ProjetoMinsait\\ProjetoMinsait.csproj",
+  "projectFilePath": "C:\\Users\\romen\\OneDrive\\Área de Trabalho\\Indra\\Projeto-Minsait\\ProjetoMinsait\\ProjetoMinsait.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\romen\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\romen\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

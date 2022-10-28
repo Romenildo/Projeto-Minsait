@@ -2320,11 +2320,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\romen\\OneDrive\\Área de Trabalho\\Indra\\ProjetoMinsait\\ProjetoMinsait\\ProjetoMinsait.csproj",
+      "projectUniqueName": "C:\\Users\\romen\\OneDrive\\Área de Trabalho\\Indra\\Projeto-Minsait\\ProjetoMinsait\\ProjetoMinsait.csproj",
       "projectName": "ProjetoMinsait",
-      "projectPath": "C:\\Users\\romen\\OneDrive\\Área de Trabalho\\Indra\\ProjetoMinsait\\ProjetoMinsait\\ProjetoMinsait.csproj",
+      "projectPath": "C:\\Users\\romen\\OneDrive\\Área de Trabalho\\Indra\\Projeto-Minsait\\ProjetoMinsait\\ProjetoMinsait.csproj",
       "packagesPath": "C:\\Users\\romen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\romen\\OneDrive\\Área de Trabalho\\Indra\\ProjetoMinsait\\ProjetoMinsait\\obj\\",
+      "outputPath": "C:\\Users\\romen\\OneDrive\\Área de Trabalho\\Indra\\Projeto-Minsait\\ProjetoMinsait\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\romen\\AppData\\Roaming\\NuGet\\NuGet.Config",
