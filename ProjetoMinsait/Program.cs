@@ -29,6 +29,10 @@ namespace ProjetoMinsait
 
             //injecoes de dependencias
             builder.Services.AddScoped<IMotoristaRepositorio, MotoristaRepositorio>();
+            builder.Services.AddScoped<ICobradorRepositorio, CobradorRepositorio>();
+            builder.Services.AddScoped<IPassageiroRepositorio, PassageiroRepositorio>();
+            builder.Services.AddScoped<IOnibusRepositorio, OnibusRepositorio>();
+            builder.Services.AddScoped<IPassagemRepositorio, PassagemRepositorio>();
 
             var app = builder.Build();
 
