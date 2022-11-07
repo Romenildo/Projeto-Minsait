@@ -11,8 +11,8 @@ namespace ProjetoMinsait.Models
         public decimal? Salario { get; set; }
 
         //relacionamento
-        [JsonIgnore]
-        public Onibus? Onibus { get; set; }
-        public int OnibusId { get; set; }
+        //[JsonIgnore]
+      //  public Onibus? Onibus { get; set; }
+       // public int OnibusId { get; set; }
     }
 }

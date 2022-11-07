@@ -15,17 +15,18 @@ namespace ProjetoMinsait.Repository
             _dbcontext = dataContext;
         }
 
-        public async Task<Onibus> BuscarPorID(int id)
+        public async Task<Onibus> BuscarPorID(Guid id)
         {
             return await _dbcontext.Onibus
                 .Where(x => x.Id == id)
-                .Include(x => x.Motorista)
+                //.Include(x => x.Motorista)
                 .FirstOrDefaultAsync();
         }
         
         public async Task<List<Onibus>> BuscarTodosOnibus()
         {
-            return await _dbcontext.Onibus.Include(x=>x.Motorista).ToListAsync();
+            return await _dbcontext.Onibus.ToListAsync();
+            // return await _dbcontext.Onibus.Include(x=>x.Motorista).ToListAsync();
 
         }
 
@@ -36,7 +37,7 @@ namespace ProjetoMinsait.Repository
             return onibus;
         }
 
-        public async Task<Onibus> Atualizar(int id, Onibus onibus)
+        public async Task<Onibus> Atualizar(Guid id, Onibus onibus)
         {
             Onibus onibusBd = await BuscarPorID(id);
 
@@ -53,7 +54,7 @@ namespace ProjetoMinsait.Repository
 
         }
 
-        public async Task<bool> Deletar(int id)
+        public async Task<bool> Deletar(Guid id)
         {
             Onibus onibusBd = await BuscarPorID(id);
 

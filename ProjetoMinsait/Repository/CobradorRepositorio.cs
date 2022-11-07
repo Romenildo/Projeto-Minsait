@@ -15,14 +15,14 @@ namespace ProjetoMinsait.Repository
             _dbcontext = dataContext;
         }
 
-        public async Task<Cobrador> BuscarPorID(int id)
+        public async Task<Cobrador> BuscarPorID(Guid id)
         {
-            return await _dbcontext.Cobradores.FirstOrDefaultAsync(x=>x.Id==id);
+            return await _dbcontext.Cobradores.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<Cobrador>> BuscarTodosCobradores()
         {
-            return await _dbcontext.Cobradores.ToListAsync();
+            return await _dbcontext.Cobradores.AsNoTracking().ToListAsync();
 
         }
 
@@ -33,7 +33,7 @@ namespace ProjetoMinsait.Repository
             return cobrador;
         }
 
-        public async Task<Cobrador> Atualizar(int id, Cobrador cobrador)
+        public async Task<Cobrador> Atualizar(Guid id, Cobrador cobrador)
         {
             Cobrador cobradorBd = await BuscarPorID(id);
 
@@ -54,7 +54,7 @@ namespace ProjetoMinsait.Repository
 
         }
 
-        public async Task<bool> Deletar(int id)
+        public async Task<bool> Deletar(Guid id)
         {
             Cobrador cobradorBd = await BuscarPorID(id);
 

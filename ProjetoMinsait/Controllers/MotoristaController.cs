@@ -24,10 +24,10 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Motorista>> BuscarPorID(int id)
+        public async Task<ActionResult<Motorista>> BuscarPorID(Guid id)
         {
             Motorista resultado = await _motoristaRepositorio.BuscarPorID(id);
-            return Ok(resultado);
+            return resultado == null ? BadRequest() : Ok(resultado);
         }
 
         [HttpPost]
@@ -41,7 +41,7 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Motorista>> Atualizar(int id, [FromBody] Motorista motorista)
+        public async Task<ActionResult<Motorista>> Atualizar(Guid id, [FromBody] Motorista motorista)
         {
             motorista.Id = id;
             Motorista resultado = await _motoristaRepositorio.Atualizar(id, motorista);
@@ -49,7 +49,7 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<bool>> Deletar(int id)
+        public async Task<ActionResult<bool>> Deletar(Guid id)
         {
             bool resultado = await _motoristaRepositorio.Deletar(id);
             return Ok(resultado);

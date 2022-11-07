@@ -15,14 +15,14 @@ namespace ProjetoMinsait.Repository
             _dbcontext = dataContext;
         }
 
-        public async Task<Passagem> BuscarPorID(int id)
+        public async Task<Passagem> BuscarPorID(Guid id)
         {
-            return await _dbcontext.Passagem.FirstOrDefaultAsync(x=>x.Id==id);
+            return await _dbcontext.Passagem.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<Passagem>> BuscarTodasPassagens()
         {
-            return await _dbcontext.Passagem.ToListAsync();
+            return await _dbcontext.Passagem.AsNoTracking().ToListAsync();
 
         }
 
@@ -33,7 +33,7 @@ namespace ProjetoMinsait.Repository
             return passagem;
         }
 
-        public async Task<Passagem> Atualizar(int id, Passagem Passagem)
+        public async Task<Passagem> Atualizar(Guid id, Passagem Passagem)
         {
             Passagem passagemBd = await BuscarPorID(id);
 
@@ -42,15 +42,13 @@ namespace ProjetoMinsait.Repository
                 throw new Exception($"Usuario com Id: ${id} não encontrado!");
             }
 
-            
-
             _dbcontext.Passagem.Update(passagemBd);
             await _dbcontext.SaveChangesAsync();
             return passagemBd;
 
         }
 
-        public async Task<bool> Deletar(int id)
+        public async Task<bool> Deletar(Guid id)
         {
             Passagem passagemBd = await BuscarPorID(id);
 

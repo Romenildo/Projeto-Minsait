@@ -24,21 +24,25 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Passagem>> BuscarPorID(int id)
+        public async Task<ActionResult<Passagem>> BuscarPorID(Guid id)
         {
             Passagem resultado = await _passagemRepositorio.BuscarPorID(id);
-            return Ok(resultado);
+            return resultado == null ? BadRequest() : Ok(resultado);
         }
 
         [HttpPost]
         public async Task<ActionResult<Passagem>> Cadastrar([FromBody] Passagem passagem) 
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             Passagem resultado = await _passagemRepositorio.Adicionar(passagem);
             return Ok(resultado);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Passagem>> Atualizar(int id, [FromBody] Passagem passagem)
+        public async Task<ActionResult<Passagem>> Atualizar(Guid id, [FromBody] Passagem passagem)
         {
             passagem.Id = id;
             Passagem resultado = await _passagemRepositorio.Atualizar(id, passagem);
@@ -46,7 +50,7 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<bool>> Deletar(int id)
+        public async Task<ActionResult<bool>> Deletar(Guid id)
         {
             bool resultado = await _passagemRepositorio.Deletar(id);
             return Ok(resultado);

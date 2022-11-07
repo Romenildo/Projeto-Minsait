@@ -24,21 +24,25 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Cobrador>> BuscarPorID(int id)
+        public async Task<ActionResult<Cobrador>> BuscarPorID(Guid id)
         {
             Cobrador resultado = await _cobradorRepositorio.BuscarPorID(id);
-            return Ok(resultado);
+            return resultado == null ? BadRequest() : Ok(resultado);
         }
 
         [HttpPost]
         public async Task<ActionResult<Cobrador>> Cadastrar([FromBody] Cobrador cobrador) 
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             Cobrador resultado = await _cobradorRepositorio.Adicionar(cobrador);
             return Ok(resultado);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Cobrador>> Atualizar(int id, [FromBody] Cobrador cobrador)
+        public async Task<ActionResult<Cobrador>> Atualizar(Guid id, [FromBody] Cobrador cobrador)
         {
             cobrador.Id = id;
             Cobrador resultado = await _cobradorRepositorio.Atualizar(id, cobrador);
@@ -46,7 +50,7 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<bool>> Deletar(int id)
+        public async Task<ActionResult<bool>> Deletar(Guid id)
         {
             bool resultado = await _cobradorRepositorio.Deletar(id);
             return Ok(resultado);

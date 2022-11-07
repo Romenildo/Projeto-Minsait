@@ -24,21 +24,25 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Onibus>> BuscarPorID(int id)
+        public async Task<ActionResult<Onibus>> BuscarPorID(Guid id)
         {
             Onibus resultado = await _onibusRepositorio.BuscarPorID(id);
-            return Ok(resultado);
+            return resultado == null ? BadRequest() : Ok(resultado);
         }
 
         [HttpPost]
         public async Task<ActionResult<Onibus>> Cadastrar([FromBody] Onibus onibus) 
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             Onibus resultado = await _onibusRepositorio.Adicionar(onibus);
             return Ok(resultado);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Onibus>> Atualizar(int id, [FromBody] Onibus onibus)
+        public async Task<ActionResult<Onibus>> Atualizar(Guid id, [FromBody] Onibus onibus)
         {
             onibus.Id = id;
             Onibus resultado = await _onibusRepositorio.Atualizar(id, onibus);
@@ -46,7 +50,7 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<bool>> Deletar(int id)
+        public async Task<ActionResult<bool>> Deletar(Guid id)
         {
             bool resultado = await _onibusRepositorio.Deletar(id);
             return Ok(resultado);
