@@ -39,7 +39,7 @@ namespace ProjetoMinsait.Repository
 
             if (passageiroBd == null)
             {
-                throw new Exception($"Usuario com Id: ${id} não encontrado!");
+                throw new Exception($"Usuario com Id: {id} não encontrado!");
             }
 
             passageiroBd.Nome = passageiro.Nome;
@@ -61,7 +61,7 @@ namespace ProjetoMinsait.Repository
 
             if (passageiroBd == null)
             {
-                throw new Exception($"Usuario com Id: ${id} não encontrado!");
+                throw new Exception($"Usuario com Id: {id} não encontrado!");
             }
             _dbcontext.Passageiros.Remove(passageiroBd);
             await _dbcontext.SaveChangesAsync();

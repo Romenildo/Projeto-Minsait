@@ -38,12 +38,16 @@ namespace ProjetoMinsait.Controllers
                 return BadRequest();
             }
             Passagem resultado = await _passagemRepositorio.Adicionar(passagem);
-            return Ok(resultado);
+            return Created($"v1/api/passagem/{resultado.Id}", resultado);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult<Passagem>> Atualizar(Guid id, [FromBody] Passagem passagem)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             passagem.Id = id;
             Passagem resultado = await _passagemRepositorio.Atualizar(id, passagem);
             return Ok(resultado);

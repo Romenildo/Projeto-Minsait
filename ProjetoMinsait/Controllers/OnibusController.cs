@@ -38,12 +38,16 @@ namespace ProjetoMinsait.Controllers
                 return BadRequest();
             }
             Onibus resultado = await _onibusRepositorio.Adicionar(onibus);
-            return Ok(resultado);
+            return Created($"v1/api/onibus/{resultado.Id}", resultado);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult<Onibus>> Atualizar(Guid id, [FromBody] Onibus onibus)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             onibus.Id = id;
             Onibus resultado = await _onibusRepositorio.Atualizar(id, onibus);
             return Ok(resultado);

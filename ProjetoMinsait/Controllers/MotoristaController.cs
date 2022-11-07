@@ -37,12 +37,16 @@ namespace ProjetoMinsait.Controllers
                 return BadRequest();
             }
             Motorista resultado = await _motoristaRepositorio.Adicionar(motorista);
-            return Ok(resultado);
+            return Created($"v1/api/motorista/{resultado.Id}", resultado);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult<Motorista>> Atualizar(Guid id, [FromBody] Motorista motorista)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             motorista.Id = id;
             Motorista resultado = await _motoristaRepositorio.Atualizar(id, motorista);
             return Ok(resultado);

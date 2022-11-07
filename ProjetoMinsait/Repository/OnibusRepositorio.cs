@@ -43,7 +43,7 @@ namespace ProjetoMinsait.Repository
 
             if (onibusBd == null)
             {
-                throw new Exception($"Usuario com Id: ${id} não encontrado!");
+                throw new Exception($"Usuario com Id: {id} não encontrado!");
             }
 
             
@@ -60,7 +60,7 @@ namespace ProjetoMinsait.Repository
 
             if (onibusBd == null)
             {
-                throw new Exception($"Usuario com Id: ${id} não encontrado!");
+                throw new Exception($"Usuario com Id: {id} não encontrado!");
             }
             _dbcontext.Onibus.Remove(onibusBd);
             await _dbcontext.SaveChangesAsync();

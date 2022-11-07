@@ -38,12 +38,16 @@ namespace ProjetoMinsait.Controllers
                 return BadRequest();
             }
             Cobrador resultado = await _cobradorRepositorio.Adicionar(cobrador);
-            return Ok(resultado);
+            return Created($"v1/api/cobrador/{resultado.Id}", resultado);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult<Cobrador>> Atualizar(Guid id, [FromBody] Cobrador cobrador)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             cobrador.Id = id;
             Cobrador resultado = await _cobradorRepositorio.Atualizar(id, cobrador);
             return Ok(resultado);

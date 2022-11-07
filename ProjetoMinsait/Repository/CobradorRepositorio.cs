@@ -39,7 +39,7 @@ namespace ProjetoMinsait.Repository
 
             if (cobradorBd == null)
             {
-                throw new Exception($"Usuario com Id: ${id} não encontrado!");
+                throw new Exception($"Usuario com Id: {id} não encontrado!");
             }
 
             cobradorBd.Nome = cobrador.Nome;
@@ -60,7 +60,7 @@ namespace ProjetoMinsait.Repository
 
             if (cobradorBd == null)
             {
-                throw new Exception($"Usuario com Id: ${id} não encontrado!");
+                throw new Exception($"Usuario com Id: {id} não encontrado!");
             }
             _dbcontext.Cobradores.Remove(cobradorBd);
             await _dbcontext.SaveChangesAsync();

@@ -38,12 +38,16 @@ namespace ProjetoMinsait.Controllers
                 return BadRequest();
             }
             Passageiro resultado = await _passageiroRepositorio.Adicionar(passageiro);
-            return Ok(resultado);
+            return Created($"v1/api/passageiro/{resultado.Id}", resultado);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult<Passageiro>> Atualizar(Guid id, [FromBody] Passageiro passageiro)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             passageiro.Id = id;
             Passageiro resultado = await _passageiroRepositorio.Atualizar(id, passageiro);
             return Ok(resultado);
