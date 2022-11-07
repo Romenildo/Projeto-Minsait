@@ -1,7 +1,10 @@
-﻿namespace ProjetoMinsait.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProjetoMinsait.Models
 {
     public class Cobrador : Pessoa
     {
-        public string? Salario { get; set; }
+        [Range(0,100000.00, ErrorMessage ="Campo do Sálario inválido") ]
+        public decimal? Salario { get; set; }
     }
 }

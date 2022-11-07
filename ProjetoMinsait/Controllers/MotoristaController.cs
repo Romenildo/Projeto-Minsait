@@ -33,6 +33,9 @@ namespace ProjetoMinsait.Controllers
         [HttpPost]
         public async Task<ActionResult<Motorista>> Cadastrar([FromBody] Motorista motorista) 
         {
+            if (!ModelState.IsValid) { 
+                return BadRequest();
+            }
             Motorista resultado = await _motoristaRepositorio.Adicionar(motorista);
             return Ok(resultado);
         }

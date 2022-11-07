@@ -17,12 +17,15 @@ namespace ProjetoMinsait.Repository
 
         public async Task<Onibus> BuscarPorID(int id)
         {
-            return await _dbcontext.Onibus.FirstOrDefaultAsync(x=>x.Id==id);
+            return await _dbcontext.Onibus
+                .Where(x => x.Id == id)
+                .Include(x => x.Motorista)
+                .FirstOrDefaultAsync();
         }
-
+        
         public async Task<List<Onibus>> BuscarTodosOnibus()
         {
-            return await _dbcontext.Onibus.ToListAsync();
+            return await _dbcontext.Onibus.Include(x=>x.Motorista).ToListAsync();
 
         }
 
