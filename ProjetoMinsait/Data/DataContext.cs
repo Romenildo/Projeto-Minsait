@@ -10,11 +10,11 @@ namespace ProjetoMinsait.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { 
         }
 
-        public DbSet<Motorista> Motoristas { get; set; }
-        public DbSet<Cobrador> Cobradores { get; set; }
-        public DbSet<Passageiro> Passageiros { get; set; }
-        public DbSet<Onibus> Onibus { get; set; }
-        public DbSet<Passagem> Passagem { get; set; }
+        public DbSet<Motorista>? Motoristas { get; set; }
+        public DbSet<Cobrador>? Cobradores { get; set; }
+        public DbSet<Passageiro>? Passageiros { get; set; }
+        public DbSet<Onibus>? Onibus { get; set; }
+        public DbSet<Passagem>? Passagem { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

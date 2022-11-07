@@ -17,12 +17,12 @@ namespace ProjetoMinsait.Repository
 
         public async Task<Motorista> BuscarPorID(Guid id)
         {
-            return await _dbcontext.Motoristas.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            return await _dbcontext.Motoristas.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<Motorista>> BuscarTodosMotoristas()
         {
-            return await _dbcontext.Motoristas.AsNoTracking().ToListAsync();
+            return await _dbcontext.Motoristas.ToListAsync();
 
         }
 

@@ -10,7 +10,8 @@ namespace ProjetoMinsait.Data.Map
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(255);
-            builder.Property(x => x.Rg).IsRequired().HasMaxLength(12);    
+            builder.Property(x => x.Rg).IsRequired().HasMaxLength(12);
+           
         }
     }
 }

@@ -17,12 +17,12 @@ namespace ProjetoMinsait.Repository
 
         public async Task<Passagem> BuscarPorID(Guid id)
         {
-            return await _dbcontext.Passagem.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            return await _dbcontext.Passagem.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<Passagem>> BuscarTodasPassagens()
         {
-            return await _dbcontext.Passagem.AsNoTracking().ToListAsync();
+            return await _dbcontext.Passagem.ToListAsync();
 
         }
 

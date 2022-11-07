@@ -21,8 +21,7 @@ namespace ProjetoMinsait
 
             //connection with sql server
             var connectionStringDB = builder.Configuration.GetConnectionString("DataBase");
-            builder.Services.AddEntityFrameworkSqlServer()
-                .AddDbContext<DataContext>(
+            builder.Services.AddDbContext<DataContext>(
                     options => options.UseSqlServer(connectionStringDB)
                 );
 

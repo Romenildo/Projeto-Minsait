@@ -15,6 +15,9 @@ namespace ProjetoMinsait.Models
         public string? HorarioChegada { get; set; }
         [Required(ErrorMessage = "O Campo de Preco da Passagem é obrigatorio!")]
         public string? PrecoPassagem { get; set; }
+        public Guid PassageiroId { get; set; }
+        public Passageiro? Passageiro { get; set; }
+
 
     }
 }
