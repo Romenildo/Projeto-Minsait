@@ -39,6 +39,9 @@ Tema: livre de sua Escolha.
 
 ## Fontes: 
 
+[Aula 1 Rodolpho](https://freeleaf.notion.site/08-10-Introducao-NET-a992a090127c4f5b8b83377ba1f6c1f1)   
+[Aula 2 Rodolpho](https://freeleaf.notion.site/22-10-Clean-code-e4e7e66a940442b192394fdc181faf7e)   
+   
 [Clean Code](https://balta.io/blog/clean-code )   
 [Iniciar uma APi com aspNet 6.0(balta.io)](https://www.youtube.com/watch?v=QzCSN9wN4JA&t=1331s&ab_channel=balta.io)   
 [Iniciar uma APi com aspNet 6.0](https://www.youtube.com/watch?v=2TxePNK0kc8&t  )   
