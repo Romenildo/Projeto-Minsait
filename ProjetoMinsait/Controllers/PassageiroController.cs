@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoMinsait.Models;
 using ProjetoMinsait.Models.Dtos;
-using ProjetoMinsait.Repository;
 using ProjetoMinsait.Repository.Interfaces;
 
 namespace ProjetoMinsait.Controllers
@@ -62,10 +61,11 @@ namespace ProjetoMinsait.Controllers
             return Ok(resultado);
         }
 
-        [HttpPut("{idPassagem}/vincularCobrador/{nomeVendedor}")]
-        public async Task<ActionResult<string>> ComprarPassagem(Guid idPassagem, string nomeVendedor)
+        [HttpPut("{nomeSobrenome}/ComprarPassagem/{idPassagem}")]
+        public async Task<ActionResult<string>> ComprarPassagem(string nomeSobrenome, Guid idPassagem)
         {
-            return await _passageiroRepositorio.ComprarPassagem(nomeVendedor, idPassagem);
+            string resultado = await _passageiroRepositorio.ComprarPassagem(nomeSobrenome, idPassagem);
+            return Ok(resultado);
         }
 
     }

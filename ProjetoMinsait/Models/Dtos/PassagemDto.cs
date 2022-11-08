@@ -11,7 +11,7 @@ namespace ProjetoMinsait.Models.Dtos
         public string? DestinoChegada { get; set; }
         public string? HorarioSaida { get; set; }
         public string? HorarioChegada { get; set; }
-        public string? PrecoPassagem { get; set; }
+        public double PrecoPassagem { get; set; }
 
     }
 }

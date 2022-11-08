@@ -12,7 +12,7 @@ namespace ProjetoMinsait.Models.Dtos
         public string? Rg { get; set; }
         public string? DataNascimento { get; set; }
         public string? Contato { get; set; }
-        public string? Salario { get; set; }
+        public double Salario { get; set; }
 
     }
 }

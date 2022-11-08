@@ -12,8 +12,8 @@ using ProjetoMinsait.Data;
 namespace ProjetoMinsait.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221108204725_Dtos")]
-    partial class Dtos
+    [Migration("20221108212258_passageiro-update")]
+    partial class passageiroupdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,8 +49,8 @@ namespace ProjetoMinsait.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<string>("Salario")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Salario")
+                        .HasColumnType("float");
 
                     b.Property<string>("Sobrenome")
                         .IsRequired()
@@ -96,8 +96,8 @@ namespace ProjetoMinsait.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<string>("Salario")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Salario")
+                        .HasColumnType("float");
 
                     b.Property<string>("Sobrenome")
                         .IsRequired()
@@ -160,7 +160,7 @@ namespace ProjetoMinsait.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<bool?>("Seguro")
+                    b.Property<bool>("Seguro")
                         .HasColumnType("bit");
 
                     b.Property<string>("Sobrenome")
@@ -200,9 +200,8 @@ namespace ProjetoMinsait.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PrecoPassagem")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("PrecoPassagem")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

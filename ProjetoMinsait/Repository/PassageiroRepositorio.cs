@@ -37,6 +37,7 @@ namespace ProjetoMinsait.Repository
         public async Task<PassageiroDto> Adicionar(Passageiro passageiro)
         {
             passageiro.Id = new Guid();
+            passageiro.NomeCompleto = passageiro.GetNomeCompleto();
 
             await _dbcontext.Passageiros.AddAsync(passageiro);
             await _dbcontext.SaveChangesAsync();
@@ -85,19 +86,21 @@ namespace ProjetoMinsait.Repository
         public async Task<string> ComprarPassagem(string nomePassageiro, Guid idPassagem)
         {
             Passagem passagemBd = await _dbcontext.Passagem.Where(x => x.Id == idPassagem).FirstOrDefaultAsync();
-            Passageiro passageiroBd = await _dbcontext.Passageiros.Where(x => x.Nome == nomePassageiro).FirstOrDefaultAsync();
+            Passageiro passageiroBd = await _dbcontext.Passageiros.Where(x => x.NomeCompleto == nomePassageiro).FirstOrDefaultAsync();
 
             if (passageiroBd == null)
             {
-                throw new Exception($"Cobrador: {passageiroBd} não encontrado!");
+                throw new Exception($"Passageiro: { nomePassageiro } não encontrado!");
             }
             if (passagemBd == null)
             {
-                throw new Exception($"Passagem com Id: {passagemBd} não encontrado!");
+                throw new Exception($"Passagem com Id: { passagemBd } não encontrado!");
             }
 
             passageiroBd.Passagem = passagemBd;
             passagemBd.Passageiros?.Add(passageiroBd);
+
+            passageiroBd.Passagem.PrecoPassagem = passageiroBd.CalcularValorPassagem(passagemBd.PrecoPassagem);
 
              _dbcontext.Passageiros.Update(passageiroBd);
             _dbcontext.Passagem.Update(passagemBd);

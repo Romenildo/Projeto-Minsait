@@ -47,8 +47,8 @@ namespace ProjetoMinsait.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<string>("Salario")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Salario")
+                        .HasColumnType("float");
 
                     b.Property<string>("Sobrenome")
                         .IsRequired()
@@ -94,8 +94,8 @@ namespace ProjetoMinsait.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<string>("Salario")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Salario")
+                        .HasColumnType("float");
 
                     b.Property<string>("Sobrenome")
                         .IsRequired()
@@ -150,6 +150,10 @@ namespace ProjetoMinsait.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("NomeCompleto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid?>("PassagemId")
                         .HasColumnType("uniqueidentifier");
 
@@ -158,7 +162,7 @@ namespace ProjetoMinsait.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<bool?>("Seguro")
+                    b.Property<bool>("Seguro")
                         .HasColumnType("bit");
 
                     b.Property<string>("Sobrenome")
@@ -198,9 +202,8 @@ namespace ProjetoMinsait.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PrecoPassagem")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("PrecoPassagem")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

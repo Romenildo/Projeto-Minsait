@@ -9,7 +9,7 @@ namespace ProjetoMinsait.Models
     {
         [JsonIgnore]
         public Guid Id { get; set; }
-        public string? Salario { get; set; }
+        public double Salario { get; set; } = 0.0;
         [JsonIgnore]
         public Guid? OnibusId { get; set; }
         [JsonIgnore]
