@@ -25,17 +25,48 @@ Tema: livre de sua Escolha.
  Consistem em um Sistema de controle de Onibus de uma Rodoviaria. Onde pode vincular ônibus, Motoristas, Passageiros e Passagens;
  E assim gerenciando as importantes informações sobre as viagens e passageiros nos ônibus.
 
- ## Como executar
+ ## Como executar no docker-compose
  
  ```
-  ... Em Desenvolvimento
+  ... Em Desenvolvimento(falta docker-compose e .dotenv)
  ```
 
  
- # Diagrama de Classe v1
+ # Documentação
+ 
+ 
+## Diagrama de Classe v2
 <p align="center">
-  <img src="https://github.com/Romenildo/Treinamento-GIT/blob/master/diagramaDeClasse.png" alt="Diagrama de Classe">
+  <img src="https://github.com/Romenildo/Treinamento-GIT/blob/master/diagramaDeClassev2.png" alt="Diagrama de Classe">
 </p>
+
+## Requisitos
+### Requisitos gerais do sistema:
+- Req_01: CRUD de Motoristas;✔️
+- Req_02: Motorista só está associado a um Onibus;✔️
+- Req_03: Motorista deve possuir uma cnh;✔️
+- Req_04: CRUD de Cobradores;✔️
+- Req_05: Cobrador só está associado a um Onibus;✔️
+- Req_05: CRUD de Onibus;✔️
+- Req_06: Onibus deve possuir Motorista, cobrador e a Passagem com a lista de Passageiros;✔️
+- Req_07: CRUD de Passagens;✔️
+- Req_08: CRUD de Passagens deve possuir o valor de cada destino;✔️
+- Req_09: CRUD de Passagens na hora da compra deve calcular o seguro e tarifa do Passageiro;✔️
+- Req_10: CRUD de Passagens deve gerar um qrCode final com as informações para o Passageiro;
+- Req_11: CRUD de Passageiros;✔️
+- Req_12: CRUD de Passageiros podem comprar passagens;✔️
+- Req_13: CRUD de Passageiros podem cancelar sua passagem;
+- Req_14: CRUD de Passageiros deve possuir a opçao de querer seguro(taxa: 4.50) ou não;✔️
+- Req_15: CRUD de Passageiros com tipo de tarifa (Estudante) possuem 50% de desconto no proço final da passagem;✔️
+
+
+
+## Caso de Uso
+
+<p align="center">
+  <img src="https://github.com/Romenildo/Treinamento-GIT/blob/master/CasoDeUso.png" alt="Caso de Uso">
+</p>
+
 
 ## Fontes: 
 
@@ -49,11 +80,8 @@ Tema: livre de sua Escolha.
 [Mapeamento](https://www.youtube.com/watch?v=PgEFUvHrxSE&ab_channel=CodingNight)                                
 [Relacionamentos]( https://www.freecodecamp.org/portuguese/news/um-otimo-guia-sobre-como-construir-apis-rest-com-asp-net-core/)   
 [Relacionamentos one-to-one](https://cursos.alura.com.br/forum/topico-relacionamento-one-to-one-no-entity-no-codefirst-38788)   
-   
-
-  
-  
-
-
-
+[Dtos](https://learn.microsoft.com/pt-br/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5)   
+[Dtos video](https://www.youtube.com/watch?v=XJzbNj3_cqc&t=32s&ab_channel=PabloCodes)   
+[Automapper](https://automapper.org/)   
+[Automapper video](https://www.youtube.com/watch?v=EB8Pl9Axssk&ab_channel=PabloCodes)   
 
