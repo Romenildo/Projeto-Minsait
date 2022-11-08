@@ -13,6 +13,8 @@ namespace ProjetoMinsait.Models
         public bool? Seguro { get; set; }
         public int? Assento { get; set; }
         public TipoTarifa Tipo { get; set; }
+        [JsonIgnore]
+        public virtual Passagem? Passagem { get; set; }
 
     }
 }

@@ -1,13 +1,15 @@
 ﻿using ProjetoMinsait.Models;
+using ProjetoMinsait.Models.Dtos;
 
 namespace ProjetoMinsait.Repository.Interfaces
 {
     public interface IPassageiroRepositorio
     {
-        Task<List<Passageiro>> BuscarTodosPassageiros();
-        Task<Passageiro> BuscarPorID(Guid id);
-        Task<Passageiro> Adicionar(Passageiro passageiro);
-        Task<Passageiro> Atualizar(Guid id, Passageiro passageiro);
-        Task<bool> Deletar(Guid id);
+        Task<List<PassageiroDto>> BuscarTodosPassageiros();
+        Task<PassageiroDto> BuscarPorID(Guid id);
+        Task<PassageiroDto> Adicionar(Passageiro passageiro);
+        Task<PassageiroDto> Atualizar(Guid id, Passageiro passageiro);
+        Task<string> Deletar(Guid id);
+        Task<string> ComprarPassagem(string nomePassageiro, Guid idPassagem);
     }
 }

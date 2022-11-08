@@ -33,6 +33,8 @@ namespace ProjetoMinsait.Repository
         public async Task<Onibus> Adicionar(Onibus onibus)
         {
             onibus.Id = new Guid();
+            onibus.Cobrador = null;
+            onibus.Motorista = null;
             await _dbcontext.Onibus.AddAsync(onibus);
             await _dbcontext.SaveChangesAsync();
             return onibus;

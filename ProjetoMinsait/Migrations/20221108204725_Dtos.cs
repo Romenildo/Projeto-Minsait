@@ -4,7 +4,7 @@
 
 namespace ProjetoMinsait.Migrations
 {
-    public partial class final : Migration
+    public partial class Dtos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

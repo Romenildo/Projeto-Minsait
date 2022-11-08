@@ -7,7 +7,7 @@ namespace ProjetoMinsait.Models
 {
     public class Cobrador : Pessoa
     {
-        //[JsonIgnore]
+        [JsonIgnore]
         public Guid Id { get; set; }
         public string? Salario { get; set; }
         [JsonIgnore]

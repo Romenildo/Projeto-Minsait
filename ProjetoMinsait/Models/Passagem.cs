@@ -5,7 +5,7 @@ namespace ProjetoMinsait.Models
 {
     public class Passagem
     {
-        [JsonIgnore]
+        //[JsonIgnore]
         public Guid Id { get; set; }
         [Required(ErrorMessage ="O Campo de Destino é obrigatorio!")]
         public string? DestinoSaida { get; set; }
@@ -18,7 +18,8 @@ namespace ProjetoMinsait.Models
         [Required(ErrorMessage = "O Campo de Preco da Passagem é obrigatorio!")]
         public string? PrecoPassagem { get; set; }
         [JsonIgnore]
-        public virtual Onibus? Onibus { get; set; }
+        public virtual IList<Passageiro>? Passageiros { get; set; }
+        //public virtual Onibus? Onibus { get; set; }
 
 
     }

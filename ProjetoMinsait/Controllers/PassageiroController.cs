@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoMinsait.Models;
+using ProjetoMinsait.Models.Dtos;
+using ProjetoMinsait.Repository;
 using ProjetoMinsait.Repository.Interfaces;
 
 namespace ProjetoMinsait.Controllers
@@ -17,47 +19,53 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Passageiro>>> BuscarTodosPassageiros()
+        public async Task<ActionResult<List<PassageiroDto>>> BuscarTodosPassageiros()
         {
-            List<Passageiro> resultado = await _passageiroRepositorio.BuscarTodosPassageiros();
-            return Ok(resultado);
+            List<PassageiroDto> resultado = await _passageiroRepositorio.BuscarTodosPassageiros();
+            return resultado.Any() ? Ok(resultado) : BadRequest("Passageiros não encontrados");
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Passageiro>> BuscarPorID(Guid id)
+        public async Task<ActionResult<PassageiroDto>> BuscarPorID(Guid id)
         {
-            Passageiro resultado = await _passageiroRepositorio.BuscarPorID(id);
+            PassageiroDto resultado = await _passageiroRepositorio.BuscarPorID(id);
             return resultado == null ? BadRequest() : Ok(resultado);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Passageiro>> Cadastrar([FromBody] Passageiro passageiro) 
+        public async Task<ActionResult<PassageiroDto>> Cadastrar([FromBody] Passageiro passageiro) 
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            Passageiro resultado = await _passageiroRepositorio.Adicionar(passageiro);
+            PassageiroDto resultado = await _passageiroRepositorio.Adicionar(passageiro);
             return Created($"v1/api/passageiro/{resultado.Id}", resultado);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Passageiro>> Atualizar(Guid id, [FromBody] Passageiro passageiro)
+        public async Task<ActionResult<PassageiroDto>> Atualizar(Guid id, [FromBody] Passageiro passageiro)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
             passageiro.Id = id;
-            Passageiro resultado = await _passageiroRepositorio.Atualizar(id, passageiro);
+            PassageiroDto resultado = await _passageiroRepositorio.Atualizar(id, passageiro);
             return Ok(resultado);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<bool>> Deletar(Guid id)
+        public async Task<ActionResult<string>> Deletar(Guid id)
         {
-            bool resultado = await _passageiroRepositorio.Deletar(id);
+            string resultado = await _passageiroRepositorio.Deletar(id);
             return Ok(resultado);
+        }
+
+        [HttpPut("{idPassagem}/vincularCobrador/{nomeVendedor}")]
+        public async Task<ActionResult<string>> ComprarPassagem(Guid idPassagem, string nomeVendedor)
+        {
+            return await _passageiroRepositorio.ComprarPassagem(nomeVendedor, idPassagem);
         }
 
     }

@@ -122,3 +122,5 @@ C:\Users\romen\OneDrive\Área de Trabalho\Indra\Projeto-Minsait\ProjetoMinsait\o
 C:\Users\romen\OneDrive\Área de Trabalho\Indra\Projeto-Minsait\ProjetoMinsait\obj\Debug\net6.0\ProjetoMinsait.pdb
 C:\Users\romen\OneDrive\Área de Trabalho\Indra\Projeto-Minsait\ProjetoMinsait\obj\Debug\net6.0\ProjetoMinsait.genruntimeconfig.cache
 C:\Users\romen\OneDrive\Área de Trabalho\Indra\Projeto-Minsait\ProjetoMinsait\obj\Debug\net6.0\ref\ProjetoMinsait.dll
+C:\Users\romen\OneDrive\Área de Trabalho\Indra\Projeto-Minsait\ProjetoMinsait\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\romen\OneDrive\Área de Trabalho\Indra\Projeto-Minsait\ProjetoMinsait\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

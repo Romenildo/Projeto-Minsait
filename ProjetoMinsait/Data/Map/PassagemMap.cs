@@ -9,6 +9,7 @@ namespace ProjetoMinsait.Data.Map
         public void Configure(EntityTypeBuilder<Passagem> builder)
         {
             builder.HasKey(x => x.Id);
+            builder.HasMany(x => x.Passageiros).WithOne(x => x.Passagem);
                
         }
     }

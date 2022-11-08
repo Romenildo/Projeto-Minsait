@@ -1,13 +1,14 @@
 ﻿using ProjetoMinsait.Models;
+using ProjetoMinsait.Models.Dtos;
 
 namespace ProjetoMinsait.Repository.Interfaces
 {
     public interface IMotoristaRepositorio
     {
-        Task<List<Motorista>> BuscarTodosMotoristas();
-        Task<Motorista> BuscarPorID(Guid id);
-        Task<Motorista> Adicionar(Motorista motorista);
-        Task<Motorista> Atualizar(Guid id, Motorista motorista);
-        Task<bool> Deletar(Guid id);
+        Task<List<MotoristaDto>> BuscarTodosMotoristas();
+        Task<MotoristaDto> BuscarPorID(Guid id);
+        Task<MotoristaDto> Adicionar(Motorista motorista);
+        Task<MotoristaDto> Atualizar(Guid id, Motorista motorista);
+        Task<string> Deletar(Guid id);
     }
 }

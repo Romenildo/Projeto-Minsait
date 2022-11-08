@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoMinsait.Models;
+using ProjetoMinsait.Models.Dtos;
 using ProjetoMinsait.Repository.Interfaces;
 
 namespace ProjetoMinsait.Controllers
@@ -17,46 +18,46 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Passagem>>> BuscarTodosPassagems()
+        public async Task<ActionResult<List<PassagemDto>>> BuscarTodosPassagems()
         {
-            List<Passagem> resultado = await _passagemRepositorio.BuscarTodasPassagens();
+            List<PassagemDto> resultado = await _passagemRepositorio.BuscarTodasPassagens();
             return Ok(resultado);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Passagem>> BuscarPorID(Guid id)
+        public async Task<ActionResult<PassagemDto>> BuscarPorID(Guid id)
         {
-            Passagem resultado = await _passagemRepositorio.BuscarPorID(id);
+            PassagemDto resultado = await _passagemRepositorio.BuscarPorID(id);
             return resultado == null ? BadRequest() : Ok(resultado);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Passagem>> Cadastrar([FromBody] Passagem passagem) 
+        public async Task<ActionResult<PassagemDto>> Cadastrar([FromBody] Passagem passagem) 
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            Passagem resultado = await _passagemRepositorio.Adicionar(passagem);
+            PassagemDto resultado = await _passagemRepositorio.Adicionar(passagem);
             return Created($"v1/api/passagem/{resultado.Id}", resultado);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Passagem>> Atualizar(Guid id, [FromBody] Passagem passagem)
+        public async Task<ActionResult<PassagemDto>> Atualizar(Guid id, [FromBody] Passagem passagem)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
             passagem.Id = id;
-            Passagem resultado = await _passagemRepositorio.Atualizar(id, passagem);
+            PassagemDto resultado = await _passagemRepositorio.Atualizar(id, passagem);
             return Ok(resultado);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<bool>> Deletar(Guid id)
+        public async Task<ActionResult<string>> Deletar(Guid id)
         {
-            bool resultado = await _passagemRepositorio.Deletar(id);
+            string resultado = await _passagemRepositorio.Deletar(id);
             return Ok(resultado);
         }
 

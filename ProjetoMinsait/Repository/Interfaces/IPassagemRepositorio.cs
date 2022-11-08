@@ -1,13 +1,14 @@
 ﻿using ProjetoMinsait.Models;
+using ProjetoMinsait.Models.Dtos;
 
 namespace ProjetoMinsait.Repository.Interfaces
 {
     public interface IPassagemRepositorio
     {
-        Task<List<Passagem>> BuscarTodasPassagens();
-        Task<Passagem> BuscarPorID(Guid id);
-        Task<Passagem> Adicionar(Passagem passagem);
-        Task<Passagem> Atualizar(Guid id, Passagem passagem);
-        Task<bool> Deletar(Guid id);
+        Task<List<PassagemDto>> BuscarTodasPassagens();
+        Task<PassagemDto> BuscarPorID(Guid id);
+        Task<PassagemDto> Adicionar(Passagem passagem);
+        Task<PassagemDto> Atualizar(Guid id, Passagem passagem);
+        Task<string> Deletar(Guid id);
     }
 }

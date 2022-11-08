@@ -122,9 +122,7 @@ namespace ProjetoMinsait.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PassagemId")
-                        .IsUnique()
-                        .HasFilter("[PassagemId] IS NOT NULL");
+                    b.HasIndex("PassagemId");
 
                     b.ToTable("Onibus");
                 });
@@ -152,6 +150,9 @@ namespace ProjetoMinsait.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<Guid?>("PassagemId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Rg")
                         .IsRequired()
                         .HasMaxLength(15)
@@ -169,6 +170,8 @@ namespace ProjetoMinsait.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PassagemId");
 
                     b.ToTable("Passageiros");
                 });
@@ -225,8 +228,17 @@ namespace ProjetoMinsait.Migrations
             modelBuilder.Entity("ProjetoMinsait.Models.Onibus", b =>
                 {
                     b.HasOne("ProjetoMinsait.Models.Passagem", "Passagem")
-                        .WithOne("Onibus")
-                        .HasForeignKey("ProjetoMinsait.Models.Onibus", "PassagemId");
+                        .WithMany()
+                        .HasForeignKey("PassagemId");
+
+                    b.Navigation("Passagem");
+                });
+
+            modelBuilder.Entity("ProjetoMinsait.Models.Passageiro", b =>
+                {
+                    b.HasOne("ProjetoMinsait.Models.Passagem", "Passagem")
+                        .WithMany("Passageiros")
+                        .HasForeignKey("PassagemId");
 
                     b.Navigation("Passagem");
                 });
@@ -240,7 +252,7 @@ namespace ProjetoMinsait.Migrations
 
             modelBuilder.Entity("ProjetoMinsait.Models.Passagem", b =>
                 {
-                    b.Navigation("Onibus");
+                    b.Navigation("Passageiros");
                 });
 #pragma warning restore 612, 618
         }

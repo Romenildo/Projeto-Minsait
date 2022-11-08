@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoMinsait.Models;
+using ProjetoMinsait.Models.Dtos;
 using ProjetoMinsait.Repository.Interfaces;
 
 namespace ProjetoMinsait.Controllers
@@ -17,46 +18,46 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Cobrador>>> BuscarTodosCobradors()
+        public async Task<ActionResult<List<CobradorDto>>> BuscarTodosCobradors()
         {
-            List<Cobrador> resultado = await _cobradorRepositorio.BuscarTodosCobradores();
+            List<CobradorDto> resultado = await _cobradorRepositorio.BuscarTodosCobradores();
             return Ok(resultado);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Cobrador>> BuscarPorID(Guid id)
+        public async Task<ActionResult<CobradorDto>> BuscarPorID(Guid id)
         {
-            Cobrador resultado = await _cobradorRepositorio.BuscarPorID(id);
+            CobradorDto resultado = await _cobradorRepositorio.BuscarPorID(id);
             return resultado == null ? BadRequest() : Ok(resultado);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Cobrador>> Cadastrar([FromBody] Cobrador cobrador) 
+        public async Task<ActionResult<CobradorDto>> Cadastrar([FromBody] Cobrador cobrador) 
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            Cobrador resultado = await _cobradorRepositorio.Adicionar(cobrador);
+            CobradorDto resultado = await _cobradorRepositorio.Adicionar(cobrador);
             return Created($"v1/api/cobrador/{resultado.Id}", resultado);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Cobrador>> Atualizar(Guid id, [FromBody] Cobrador cobrador)
+        public async Task<ActionResult<CobradorDto>> Atualizar(Guid id, [FromBody] Cobrador cobrador)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
             cobrador.Id = id;
-            Cobrador resultado = await _cobradorRepositorio.Atualizar(id, cobrador);
+            CobradorDto resultado = await _cobradorRepositorio.Atualizar(id, cobrador);
             return Ok(resultado);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<bool>> Deletar(Guid id)
+        public async Task<ActionResult<string>> Deletar(Guid id)
         {
-            bool resultado = await _cobradorRepositorio.Deletar(id);
+            string resultado = await _cobradorRepositorio.Deletar(id);
             return Ok(resultado);
         }
 

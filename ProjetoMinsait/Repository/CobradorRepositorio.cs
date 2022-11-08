@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using ProjetoMinsait.Data;
 using ProjetoMinsait.Models;
+using ProjetoMinsait.Models.Dtos;
 using ProjetoMinsait.Repository.Interfaces;
 
 namespace ProjetoMinsait.Repository
@@ -9,36 +11,45 @@ namespace ProjetoMinsait.Repository
     {
 
         private readonly DataContext _dbcontext;
+        private readonly IMapper _mapper;
 
-        public CobradorRepositorio(DataContext dataContext) 
-        { 
+        public CobradorRepositorio(DataContext dataContext, IMapper mapper)
+        {
             _dbcontext = dataContext;
+            _mapper = mapper;
         }
 
-        public async Task<Cobrador> BuscarPorID(Guid id)
+        public async Task<CobradorDto> BuscarPorID(Guid id)
         {
-            return await _dbcontext.Cobradores.FirstOrDefaultAsync(x => x.Id == id);
+            var resultado = await _dbcontext.Cobradores.FirstOrDefaultAsync(x => x.Id == id);
+            var resultadoDto = _mapper.Map<CobradorDto>(resultado);
+
+            return resultadoDto;
         }
 
-        public async Task<List<Cobrador>> BuscarTodosCobradores()
+        public async Task<List<CobradorDto>> BuscarTodosCobradores()
         {
-            return await _dbcontext.Cobradores.ToListAsync();
+            return await _dbcontext.Cobradores
+                   .Select(x => new CobradorDto { Id = x.Id, Nome = x.Nome, Sobrenome = x.Sobrenome, Rg = x.Rg,Contato = x.Contato,DataNascimento = x.DataNascimento, Salario = x.Salario })
+                   .ToListAsync();
 
         }
 
-        public async Task<Cobrador> Adicionar(Cobrador cobrador)
+        public async Task<CobradorDto> Adicionar(Cobrador cobrador)
         {
             cobrador.Id = new Guid();
             cobrador.Onibus = null;
 
             await _dbcontext.Cobradores.AddAsync(cobrador);
             await _dbcontext.SaveChangesAsync();
-            return cobrador;
+
+            var resultadoDto = _mapper.Map<CobradorDto>(cobrador);
+            return resultadoDto;
         }
 
-        public async Task<Cobrador> Atualizar(Guid id, Cobrador cobrador)
+        public async Task<CobradorDto> Atualizar(Guid id, Cobrador cobrador)
         {
-            Cobrador cobradorBd = await BuscarPorID(id);
+            Cobrador cobradorBd = await _dbcontext.Cobradores.FirstOrDefaultAsync(x => x.Id == id);
 
             if (cobradorBd == null)
             {
@@ -53,13 +64,15 @@ namespace ProjetoMinsait.Repository
 
             _dbcontext.Cobradores.Update(cobradorBd);
             await _dbcontext.SaveChangesAsync();
-            return cobradorBd;
+
+            var resultadoDto = _mapper.Map<CobradorDto>(cobradorBd);
+            return resultadoDto;
 
         }
 
-        public async Task<bool> Deletar(Guid id)
+        public async Task<string> Deletar(Guid id)
         {
-            Cobrador cobradorBd = await BuscarPorID(id);
+            Cobrador cobradorBd = await _dbcontext.Cobradores.FirstOrDefaultAsync(x => x.Id == id);
 
             if (cobradorBd == null)
             {
@@ -68,7 +81,7 @@ namespace ProjetoMinsait.Repository
             _dbcontext.Cobradores.Remove(cobradorBd);
             await _dbcontext.SaveChangesAsync();
 
-            return true;
+            return "Cobrador deletado com sucesso!";
         }
     }
 }
