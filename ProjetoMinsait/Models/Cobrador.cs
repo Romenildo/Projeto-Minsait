@@ -7,12 +7,11 @@ namespace ProjetoMinsait.Models
 {
     public class Cobrador : Pessoa
     {
-        [JsonIgnore]
-        public Guid Id { get; set; }
         public double Salario { get; set; } = 0.0;
         [JsonIgnore]
         public Guid? OnibusId { get; set; }
         [JsonIgnore]
         public virtual Onibus? Onibus { get; set; }
+        
     }
 }

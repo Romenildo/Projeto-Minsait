@@ -1,19 +1,16 @@
-﻿using System.Text.Json.Serialization;
+﻿using ProjetoMinsait.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
-namespace ProjetoMinsait.Models
+namespace ProjetoMinsait.Models.Dtos
 {
-    public class Onibus
+    public class OnibusDto
     {
-        [JsonIgnore]
         public Guid Id { get; set; }
         public string? NomeViacao { get; set; }
-        [JsonIgnore]
         public virtual Cobrador? Cobrador { get; set; }
-        [JsonIgnore]
         public virtual Motorista? Motorista { get; set; }
-        [JsonIgnore]
         public virtual Passagem? Passagem { get; set; }
-
 
     }
 }

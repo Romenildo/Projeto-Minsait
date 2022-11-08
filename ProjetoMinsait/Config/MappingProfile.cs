@@ -12,6 +12,7 @@ namespace ProjetoMinsait.Config
             CreateMap<Motorista, MotoristaDto>();
             CreateMap<Cobrador, CobradorDto>();
             CreateMap<Passagem, PassagemDto>();
+            CreateMap<Onibus, OnibusDto>();
         }
     }
 

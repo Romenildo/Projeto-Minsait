@@ -9,7 +9,7 @@ namespace ProjetoMinsait.Data.Map
         public void Configure(EntityTypeBuilder<Onibus> builder)
         {
             builder.HasKey(x => x.Id);
-            //builder.HasOne(x => x.Passagem).WithOne(x => x.Onibus).HasForeignKey<Onibus>(fk => fk.PassagemId);
+            builder.Property(x => x.NomeViacao).IsRequired().HasMaxLength(50);
 
         }
     }

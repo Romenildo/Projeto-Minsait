@@ -19,7 +19,10 @@ namespace ProjetoMinsait.Models
         public double PrecoPassagem { get; set; } = 0.0;
         [JsonIgnore]
         public virtual IList<Passageiro>? Passageiros { get; set; }
-        //public virtual Onibus? Onibus { get; set; }
+        [JsonIgnore]
+        public Guid? OnibusId { get; set; }
+        [JsonIgnore]
+        public virtual Onibus? Onibus { get; set; }
 
 
     }

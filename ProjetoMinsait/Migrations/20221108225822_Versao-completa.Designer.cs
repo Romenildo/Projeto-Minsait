@@ -12,8 +12,8 @@ using ProjetoMinsait.Data;
 namespace ProjetoMinsait.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221108213817_passageiro-update2")]
-    partial class passageiroupdate2
+    [Migration("20221108225822_Versao-completa")]
+    partial class Versaocompleta
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,15 +31,21 @@ namespace ProjetoMinsait.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Contato")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DataNascimento")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("NomeCompleto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("OnibusId")
                         .HasColumnType("uniqueidentifier");
@@ -78,15 +84,21 @@ namespace ProjetoMinsait.Migrations
                         .HasColumnType("nvarchar(12)");
 
                     b.Property<string>("Contato")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DataNascimento")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("NomeCompleto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("OnibusId")
                         .HasColumnType("uniqueidentifier");
@@ -119,12 +131,12 @@ namespace ProjetoMinsait.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("PassagemId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("NomeViacao")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PassagemId");
 
                     b.ToTable("Onibus");
                 });
@@ -139,9 +151,11 @@ namespace ProjetoMinsait.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Contato")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DataNascimento")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -204,10 +218,17 @@ namespace ProjetoMinsait.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("OnibusId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<double>("PrecoPassagem")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OnibusId")
+                        .IsUnique()
+                        .HasFilter("[OnibusId] IS NOT NULL");
 
                     b.ToTable("Passagem");
                 });
@@ -230,15 +251,6 @@ namespace ProjetoMinsait.Migrations
                     b.Navigation("Onibus");
                 });
 
-            modelBuilder.Entity("ProjetoMinsait.Models.Onibus", b =>
-                {
-                    b.HasOne("ProjetoMinsait.Models.Passagem", "Passagem")
-                        .WithMany()
-                        .HasForeignKey("PassagemId");
-
-                    b.Navigation("Passagem");
-                });
-
             modelBuilder.Entity("ProjetoMinsait.Models.Passageiro", b =>
                 {
                     b.HasOne("ProjetoMinsait.Models.Passagem", "Passagem")
@@ -248,11 +260,22 @@ namespace ProjetoMinsait.Migrations
                     b.Navigation("Passagem");
                 });
 
+            modelBuilder.Entity("ProjetoMinsait.Models.Passagem", b =>
+                {
+                    b.HasOne("ProjetoMinsait.Models.Onibus", "Onibus")
+                        .WithOne("Passagem")
+                        .HasForeignKey("ProjetoMinsait.Models.Passagem", "OnibusId");
+
+                    b.Navigation("Onibus");
+                });
+
             modelBuilder.Entity("ProjetoMinsait.Models.Onibus", b =>
                 {
                     b.Navigation("Cobrador");
 
                     b.Navigation("Motorista");
+
+                    b.Navigation("Passagem");
                 });
 
             modelBuilder.Entity("ProjetoMinsait.Models.Passagem", b =>

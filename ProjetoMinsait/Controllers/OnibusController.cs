@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoMinsait.Models;
+using ProjetoMinsait.Models.Dtos;
 using ProjetoMinsait.Repository.Interfaces;
 
 namespace ProjetoMinsait.Controllers
@@ -17,27 +18,27 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Onibus>>> BuscarTodosOnibuss()
+        public async Task<ActionResult<List<OnibusDto>>> BuscarTodosOnibuss()
         {
-            List<Onibus> resultado = await _onibusRepositorio.BuscarTodosOnibus();
+            List<OnibusDto> resultado = await _onibusRepositorio.BuscarTodosOnibus();
             return Ok(resultado);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Onibus>> BuscarPorID(Guid id)
+        public async Task<ActionResult<OnibusDto>> BuscarPorID(Guid id)
         {
-            Onibus resultado = await _onibusRepositorio.BuscarPorID(id);
+            OnibusDto resultado = await _onibusRepositorio.BuscarPorID(id);
             return resultado == null ? BadRequest() : Ok(resultado);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Onibus>> Cadastrar([FromBody] Onibus onibus) 
+        public async Task<ActionResult<OnibusDto>> Cadastrar([FromBody] Onibus onibus) 
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            Onibus resultado = await _onibusRepositorio.Adicionar(onibus);
+            OnibusDto resultado = await _onibusRepositorio.Adicionar(onibus);
             return Created($"v1/api/onibus/{resultado.Id}", resultado);
         }
 
@@ -49,21 +50,36 @@ namespace ProjetoMinsait.Controllers
                 return BadRequest();
             }
             onibus.Id = id;
-            Onibus resultado = await _onibusRepositorio.Atualizar(id, onibus);
+            OnibusDto resultado = await _onibusRepositorio.Atualizar(id, onibus);
             return Ok(resultado);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<bool>> Deletar(Guid id)
+        public async Task<ActionResult<string>> Deletar(Guid id)
         {
-            bool resultado = await _onibusRepositorio.Deletar(id);
+            string resultado = await _onibusRepositorio.Deletar(id);
             return Ok(resultado);
         }
+        
         [HttpPut("{idOnibus}/vincularCobrador/{nomeCobrador}")]
         public async Task<ActionResult<string>> VicnularCobrador(Guid idOnibus, string nomeCobrador)
         {
+            string resultado = await _onibusRepositorio.VincularCobrador(idOnibus, nomeCobrador);
+            return Ok(resultado);
+        }
 
-            return await _onibusRepositorio.VincularCobrador(idOnibus, nomeCobrador);
+        [HttpPut("{idOnibus}/vincularMotorista/{nomeSobrenome}")]
+        public async Task<ActionResult<string>> VicnularMotorista(Guid idOnibus, string nomeSobrenome)
+        {
+            string resultado = await _onibusRepositorio.VincularMotorista(idOnibus, nomeSobrenome);
+            return Ok(resultado);
+        }
+
+        [HttpPut("{idOnibus}/vincularPassagem/{idPassagem}")]
+        public async Task<ActionResult<string>> VicnularPassagem(Guid idOnibus, Guid idPassagem)
+        {
+            string resultado = await _onibusRepositorio.VincularPassagem(idOnibus, idPassagem);
+            return Ok(resultado);
         }
 
     }

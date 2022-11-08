@@ -38,7 +38,7 @@ namespace ProjetoMinsait.Repository
         public async Task<CobradorDto> Adicionar(Cobrador cobrador)
         {
             cobrador.Id = new Guid();
-            cobrador.Onibus = null;
+            cobrador.NomeCompleto = cobrador.GetNomeCompleto();
 
             await _dbcontext.Cobradores.AddAsync(cobrador);
             await _dbcontext.SaveChangesAsync();
@@ -61,6 +61,7 @@ namespace ProjetoMinsait.Repository
             cobradorBd.DataNascimento = cobrador.DataNascimento;
             cobradorBd.Contato = cobrador.Contato;
             cobradorBd.Salario = cobrador.Salario;
+            cobrador.NomeCompleto = cobrador.GetNomeCompleto();
 
             _dbcontext.Cobradores.Update(cobradorBd);
             await _dbcontext.SaveChangesAsync();

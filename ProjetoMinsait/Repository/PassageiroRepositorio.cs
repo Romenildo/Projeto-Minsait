@@ -61,6 +61,7 @@ namespace ProjetoMinsait.Repository
             passageiroBd.Contato = passageiro.Contato;
             passageiroBd.Email = passageiro.Email;
             passageiroBd.Seguro = passageiro.Seguro;
+            passageiro.NomeCompleto = passageiro.GetNomeCompleto();
 
             _dbcontext.Passageiros.Update(passageiroBd);
             await _dbcontext.SaveChangesAsync();

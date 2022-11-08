@@ -38,6 +38,7 @@ namespace ProjetoMinsait.Repository
         public async Task<MotoristaDto> Adicionar(Motorista motorista)
         {
             motorista.Id = new Guid();
+            motorista.NomeCompleto = motorista.GetNomeCompleto();
 
             await _dbcontext.Motoristas.AddAsync(motorista);
             await _dbcontext.SaveChangesAsync();
@@ -61,6 +62,7 @@ namespace ProjetoMinsait.Repository
             motoristaBd.Contato = motorista.Contato;
             motoristaBd.Cnh = motorista.Cnh;
             motoristaBd.Salario = motorista.Salario;
+            motoristaBd.NomeCompleto = motorista.GetNomeCompleto();
 
             _dbcontext.Motoristas.Update(motoristaBd);
             await _dbcontext.SaveChangesAsync();
