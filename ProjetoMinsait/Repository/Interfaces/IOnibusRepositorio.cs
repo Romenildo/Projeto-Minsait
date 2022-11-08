@@ -9,5 +9,6 @@ namespace ProjetoMinsait.Repository.Interfaces
         Task<Onibus> Adicionar(Onibus onibus);
         Task<Onibus> Atualizar(Guid id, Onibus onibus);
         Task<bool> Deletar(Guid id);
+        Task<string> VincularCobrador(Guid idOnibus, string nomeCobrador);
     }
 }

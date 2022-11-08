@@ -28,6 +28,8 @@ namespace ProjetoMinsait.Repository
 
         public async Task<Passagem> Adicionar(Passagem passagem)
         {
+            passagem.Id = new Guid();
+
             await _dbcontext.Passagem.AddAsync(passagem);
             await _dbcontext.SaveChangesAsync();
             return passagem;

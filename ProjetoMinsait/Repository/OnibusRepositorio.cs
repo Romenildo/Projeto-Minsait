@@ -19,19 +19,20 @@ namespace ProjetoMinsait.Repository
         {
             return await _dbcontext.Onibus
                 .Where(x => x.Id == id)
-                //.Include(x => x.Motorista)
+                .Include(x => x.Motorista)
                 .FirstOrDefaultAsync();
         }
         
         public async Task<List<Onibus>> BuscarTodosOnibus()
         {
-            return await _dbcontext.Onibus.ToListAsync();
-            // return await _dbcontext.Onibus.Include(x=>x.Motorista).ToListAsync();
+            //return await _dbcontext.Onibus.ToListAsync();
+            return await _dbcontext.Onibus.Include(x=>x.Motorista).ToListAsync();
 
         }
 
         public async Task<Onibus> Adicionar(Onibus onibus)
         {
+            onibus.Id = new Guid();
             await _dbcontext.Onibus.AddAsync(onibus);
             await _dbcontext.SaveChangesAsync();
             return onibus;
@@ -66,6 +67,32 @@ namespace ProjetoMinsait.Repository
             await _dbcontext.SaveChangesAsync();
 
             return true;
+        }
+        //Relacionamentos
+        public async Task<string> VincularCobrador(Guid idOnibus, string nomeCobrador)
+        {
+            Onibus onibusBd = await _dbcontext.Onibus.Where(x => x.Id == idOnibus).FirstOrDefaultAsync();
+            Cobrador cobradorBd = await _dbcontext.Cobradores.Where(x => x.Nome == nomeCobrador).FirstOrDefaultAsync();
+
+            if (onibusBd == null )
+            {
+                throw new Exception($"Cobrador: {nomeCobrador} não encontrado!");
+            }
+            if (cobradorBd == null)
+            {
+                throw new Exception($"Onibus com Id: {idOnibus} não encontrado!");
+            }
+
+            onibusBd.Cobrador = cobradorBd;
+            cobradorBd.OnibusId = onibusBd.Id;
+            cobradorBd.Onibus = onibusBd;
+
+            await _dbcontext.Onibus.AddAsync(onibusBd);
+            await _dbcontext.Cobradores.AddAsync(cobradorBd);
+
+            await _dbcontext.SaveChangesAsync();
+
+            return "Cobrador cadastrado com sucesso";
         }
     }
 }

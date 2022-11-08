@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ProjetoMinsait.Models
 {
     public class Passagem
     {
+        [JsonIgnore]
         public Guid Id { get; set; }
         [Required(ErrorMessage ="O Campo de Destino é obrigatorio!")]
         public string? DestinoSaida { get; set; }
@@ -15,8 +17,8 @@ namespace ProjetoMinsait.Models
         public string? HorarioChegada { get; set; }
         [Required(ErrorMessage = "O Campo de Preco da Passagem é obrigatorio!")]
         public string? PrecoPassagem { get; set; }
-        public Guid PassageiroId { get; set; }
-        public Passageiro? Passageiro { get; set; }
+        [JsonIgnore]
+        public virtual Onibus? Onibus { get; set; }
 
 
     }

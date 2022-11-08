@@ -28,6 +28,9 @@ namespace ProjetoMinsait.Repository
 
         public async Task<Cobrador> Adicionar(Cobrador cobrador)
         {
+            cobrador.Id = new Guid();
+            cobrador.Onibus = null;
+
             await _dbcontext.Cobradores.AddAsync(cobrador);
             await _dbcontext.SaveChangesAsync();
             return cobrador;

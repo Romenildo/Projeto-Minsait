@@ -1,11 +1,20 @@
-﻿namespace ProjetoMinsait.Models
+﻿using System.Text.Json.Serialization;
+
+namespace ProjetoMinsait.Models
 {
     public class Onibus
     {
         public Guid Id { get; set; }
-        public Motorista? Motorista { get; set; }
-        //public Cobrador? Cobrador { get; set; }
-        public IList<Passageiro> ListaPassageiros { get; set; } = new List<Passageiro>();
+        [JsonIgnore]
+        public virtual Cobrador? Cobrador { get; set; }
+        [JsonIgnore]
+        public virtual Motorista? Motorista { get; set; }
+        [JsonIgnore]
+
+        public Guid? PassagemId { get; set; }
+        [JsonIgnore]
+        public virtual Passagem? Passagem { get; set; }
+
 
     }
 }

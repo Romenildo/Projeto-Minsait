@@ -59,6 +59,12 @@ namespace ProjetoMinsait.Controllers
             bool resultado = await _onibusRepositorio.Deletar(id);
             return Ok(resultado);
         }
+        [HttpPut("{idOnibus}/vincularCobrador/{nomeCobrador}")]
+        public async Task<ActionResult<string>> VicnularCobrador(Guid idOnibus, string nomeCobrador)
+        {
+
+            return await _onibusRepositorio.VincularCobrador(idOnibus, nomeCobrador);
+        }
 
     }
 }

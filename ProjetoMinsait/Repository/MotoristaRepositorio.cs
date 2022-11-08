@@ -28,6 +28,8 @@ namespace ProjetoMinsait.Repository
 
         public async Task<Motorista> Adicionar(Motorista motorista)
         {
+            motorista.Id = new Guid();
+
             await _dbcontext.Motoristas.AddAsync(motorista);
             await _dbcontext.SaveChangesAsync();
             return motorista;

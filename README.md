@@ -24,11 +24,28 @@ Tema: livre de sua Escolha.
  
  Consistem em um Sistema de controle de Onibus de uma Rodoviaria. Onde pode vincular ônibus, Motoristas, Passageiros e Passagens;
  E assim gerenciando as importantes informações sobre as viagens e passageiros nos ônibus.
+
+ ### Como executar
+
  
  # Diagrama de Classe v1
 <p align="center">
   <img src="https://github.com/Romenildo/Treinamento-GIT/blob/master/diagramaDeClasse.png" alt="Diagrama de Classe">
 </p>
+
+### Fontes: 
+
+[Clean Code](https://balta.io/blog/clean-code )   
+[Iniciar uma APi com aspNet 6.0(balta.io)](https://www.youtube.com/watch?v=QzCSN9wN4JA&t=1331s&ab_channel=balta.io)   
+[Iniciar uma APi com aspNet 6.0](https://www.youtube.com/watch?v=2TxePNK0kc8&t  )   
+[Fluent API](https://learn.microsoft.com/pt-br/ef/ef6/modeling/code-first/fluent/types-and-properties )
+[Mapeamento](https://www.youtube.com/watch?v=PgEFUvHrxSE&ab_channel=CodingNight)                                
+[Relacionamentos]( https://www.freecodecamp.org/portuguese/news/um-otimo-guia-sobre-como-construir-apis-rest-com-asp-net-core/)   
+[Relacionamentos one-to-one](https://cursos.alura.com.br/forum/topico-relacionamento-one-to-one-no-entity-no-codefirst-38788)   
+   
+
+  
+  
 
 
 
