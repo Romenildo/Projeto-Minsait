@@ -25,7 +25,11 @@ Tema: livre de sua Escolha.
  Consistem em um Sistema de controle de Onibus de uma Rodoviaria. Onde pode vincular ônibus, Motoristas, Passageiros e Passagens;
  E assim gerenciando as importantes informações sobre as viagens e passageiros nos ônibus.
 
- ### Como executar
+ ## Como executar
+ 
+ ```
+  ... Em Desenvolvimento
+ ```
 
  
  # Diagrama de Classe v1
@@ -33,7 +37,7 @@ Tema: livre de sua Escolha.
   <img src="https://github.com/Romenildo/Treinamento-GIT/blob/master/diagramaDeClasse.png" alt="Diagrama de Classe">
 </p>
 
-### Fontes: 
+## Fontes: 
 
 [Clean Code](https://balta.io/blog/clean-code )   
 [Iniciar uma APi com aspNet 6.0(balta.io)](https://www.youtube.com/watch?v=QzCSN9wN4JA&t=1331s&ab_channel=balta.io)   
