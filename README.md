@@ -77,11 +77,18 @@ Tema: livre de sua Escolha.
 [Iniciar uma APi com aspNet 6.0(balta.io)](https://www.youtube.com/watch?v=QzCSN9wN4JA&t=1331s&ab_channel=balta.io)   
 [Iniciar uma APi com aspNet 6.0](https://www.youtube.com/watch?v=2TxePNK0kc8&t  )   
 [Fluent API](https://learn.microsoft.com/pt-br/ef/ef6/modeling/code-first/fluent/types-and-properties )
-[Mapeamento](https://www.youtube.com/watch?v=PgEFUvHrxSE&ab_channel=CodingNight)                                
-[Relacionamentos]( https://www.freecodecamp.org/portuguese/news/um-otimo-guia-sobre-como-construir-apis-rest-com-asp-net-core/)   
+[Mapeamento](https://www.youtube.com/watch?v=PgEFUvHrxSE&ab_channel=CodingNight)           
+                        
+[Relacionamentos]( https://www.freecodecamp.org/portuguese/news/um-otimo-guia-sobre-como-construir-apis-rest-com-asp-net-core/)      
 [Relacionamentos one-to-one](https://cursos.alura.com.br/forum/topico-relacionamento-one-to-one-no-entity-no-codefirst-38788)   
+   
 [Dtos](https://learn.microsoft.com/pt-br/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5)   
 [Dtos video](https://www.youtube.com/watch?v=XJzbNj3_cqc&t=32s&ab_channel=PabloCodes)   
+   
 [Automapper](https://automapper.org/)   
-[Automapper video](https://www.youtube.com/watch?v=EB8Pl9Axssk&ab_channel=PabloCodes)   
+[Automapper video](https://www.youtube.com/watch?v=EB8Pl9Axssk&ab_channel=PabloCodes)    
+   
+[conexão com docker: video](https://www.youtube.com/watch?v=VbEhMVcWOFs&t=605s&ab_channel=JoseCarlosMacoratti)   
+[docker](https://docs.docker.com/samples/dotnet/)   
+[docker-compose](https://docs.docker.com/compose/)   
 

@@ -1,25 +1,18 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-#Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
-#For more information, please see https://aka.ms/containercompat
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["ProjetoMinsait/ProjetoMinsait.csproj", "ProjetoMinsait/"]
-RUN dotnet restore "ProjetoMinsait/ProjetoMinsait.csproj"
-COPY . .
-WORKDIR "/src/ProjetoMinsait"
-RUN dotnet build "ProjetoMinsait.csproj" -c Release -o /app/build
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
 
-FROM build AS publish
-RUN dotnet publish "ProjetoMinsait.csproj" -c Release -o /app/publish /p:UseAppHost=false
+# Copy everything else and build
+COPY ../ ./
+RUN dotnet publish -c Release -o out
 
-FROM base AS final
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "ProjetoMinsait.dll"]
