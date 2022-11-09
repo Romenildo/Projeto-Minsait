@@ -51,6 +51,11 @@ git clone git@github.com:Romenildo/Projeto-Minsait.git
 
 ## Environment variables
 
+Primeiramente vá para raiz do projeto com::
+```sh
+cd develop/ProjetoMinsait
+```
+
 O arquivo `.env.example` especifica todas as variáveis de ambiente necessárias, copie e cole com o arquivo ` .env.example` chamado` .env` para fazer o Docker Compose usar as variáveis de ambiente definidas neste arquivo:
 
 ```sh
@@ -65,6 +70,8 @@ docker-compose up --build
 
 Ele irá construir os containers e rodar a plataforma conforme especificado no arquivo `docker-compose.yml`, abrindo uma tela de log com os logs de todos os serviços iniciados.
 
+ ```
+
 ##### Parando a Execução
 
 
@@ -78,7 +85,7 @@ Para parar somente um container:
 ```ssh
 docker stop my_container
  ```
- 
+
  # Documentação
  
  
@@ -137,7 +144,8 @@ docker stop my_container
    
 [conexão com docker: video](https://www.youtube.com/watch?v=VbEhMVcWOFs&t=605s&ab_channel=JoseCarlosMacoratti)   
 [docker](https://docs.docker.com/samples/dotnet/)   
-[docker-compose](https://docs.docker.com/compose/)   
+[docker-compose](https://docs.docker.com/compose/) 
+[docker-compose 2](https://blog.christian-schou.dk/dockerize-net-core-web-api-with-ms-sql-server/)  
 
 [Enviroments](https://www.youtube.com/watch?v=lZOS27CwFT0&t=87s&ab_channel=RobertsDevTalk)
 

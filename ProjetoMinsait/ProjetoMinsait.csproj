@@ -5,8 +5,11 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>adc17e15-2fda-41f9-8554-bcc4548e6af5</UserSecretsId>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    
   </PropertyGroup>
+
+  
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
