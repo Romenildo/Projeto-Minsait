@@ -32,7 +32,6 @@ namespace ProjetoMinsait.Repository
             return await _dbcontext.Passagem
                    .Select(x => new PassagemDto { Id = x.Id, DestinoChegada =x.DestinoChegada, DestinoSaida = x.DestinoSaida, HorarioChegada = x.HorarioChegada, HorarioSaida=x.HorarioSaida, PrecoPassagem = x.PrecoPassagem })
                    .ToListAsync();
-
         }
 
         public async Task<PassagemDto> Adicionar(Passagem passagem)
@@ -77,6 +76,5 @@ namespace ProjetoMinsait.Repository
             return "Passagem Deletada com sucesso!";
         }
 
-        
     }
 }

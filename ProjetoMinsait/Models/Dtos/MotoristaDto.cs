@@ -1,7 +1,4 @@
-﻿using ProjetoMinsait.Enums;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-
+﻿
 namespace ProjetoMinsait.Models.Dtos
 {
     public class MotoristaDto
@@ -14,6 +11,5 @@ namespace ProjetoMinsait.Models.Dtos
         public string? Contato { get; set; }
         public string? Cnh { get; set; }
         public double Salario { get; set; }
-
     }
 }

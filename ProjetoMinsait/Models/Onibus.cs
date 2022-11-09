@@ -13,7 +13,5 @@ namespace ProjetoMinsait.Models
         public virtual Motorista? Motorista { get; set; }
         [JsonIgnore]
         public virtual Passagem? Passagem { get; set; }
-
-
     }
 }

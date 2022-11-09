@@ -11,8 +11,6 @@ namespace ProjetoMinsait.Data.Map
             builder.HasKey(x => x.Id);
             builder.HasMany(x => x.Passageiros).WithOne(x => x.Passagem);
             builder.HasOne(x => x.Onibus).WithOne(x => x.Passagem).HasForeignKey<Passagem>(fk => fk.OnibusId);
-
-
         }
     }
 }

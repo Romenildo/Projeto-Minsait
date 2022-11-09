@@ -32,7 +32,6 @@ namespace ProjetoMinsait.Repository
             return await _dbcontext.Cobradores
                    .Select(x => new CobradorDto { Id = x.Id, Nome = x.Nome, Sobrenome = x.Sobrenome, Rg = x.Rg,Contato = x.Contato,DataNascimento = x.DataNascimento, Salario = x.Salario })
                    .ToListAsync();
-
         }
 
         public async Task<CobradorDto> Adicionar(Cobrador cobrador)
@@ -64,6 +63,7 @@ namespace ProjetoMinsait.Repository
             }
 
             cobradorBd.Nome = cobrador.Nome;
+            cobradorBd.Sobrenome = cobrador.Sobrenome;
             cobradorBd.Rg = cobrador.Rg;
             cobradorBd.DataNascimento = cobrador.DataNascimento;
             cobradorBd.Contato = cobrador.Contato;
@@ -75,7 +75,6 @@ namespace ProjetoMinsait.Repository
 
             var resultadoDto = _mapper.Map<CobradorDto>(cobradorBd);
             return resultadoDto;
-
         }
 
         public async Task<string> Deletar(Guid id)

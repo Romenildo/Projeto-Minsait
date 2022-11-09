@@ -13,13 +13,10 @@ namespace ProjetoMinsait
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
             builder.Services.AddAutoMapper(typeof(Program));
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
 
             //docker e .env
             DotNetEnv.Env.Load();
@@ -31,16 +28,14 @@ namespace ProjetoMinsait
             var database = builder.Configuration["Database"] ?? Environment.GetEnvironmentVariable("SQL_DB_DATABASE");
 
             //--- connection with sql server ---
-
             //local
-            var connectionStringDB = builder.Configuration.GetConnectionString("DataBase");
+            //var connectionStringDB = builder.Configuration.GetConnectionString("DataBase");
 
             //Docker
-            //var connectionStringDbDocker = $"Server={server}, {port};Database={database};User={user};Password={password}";
+            var connectionStringDbDocker = $"Server={server}, {port};Database={database};User={user};Password={password}";
             builder.Services.AddDbContext<DataContext>(
-                    options => options.UseSqlServer(connectionStringDB)
+                    options => options.UseSqlServer(connectionStringDbDocker)
                 );
-
 
             //injecoes de dependencias
             builder.Services.AddScoped<IMotoristaRepositorio, MotoristaRepositorio>();
@@ -61,7 +56,6 @@ namespace ProjetoMinsait
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

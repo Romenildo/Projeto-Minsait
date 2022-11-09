@@ -10,7 +10,6 @@ namespace ProjetoMinsait.Controllers
     [ApiController]
     public class PassageiroController : ControllerBase
     {
-
         private readonly IPassageiroRepositorio _passageiroRepositorio;
 
         public PassageiroController(IPassageiroRepositorio passageiroRepositorio)

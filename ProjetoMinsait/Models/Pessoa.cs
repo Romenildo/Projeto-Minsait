@@ -19,7 +19,6 @@ namespace ProjetoMinsait.Models
         public string? Contato { get; set; }
         [JsonIgnore]
         public string NomeCompleto { get; set; } = "";
-
         public string GetNomeCompleto()
         {
             return Nome + Sobrenome;

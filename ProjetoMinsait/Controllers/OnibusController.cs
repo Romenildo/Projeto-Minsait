@@ -9,7 +9,6 @@ namespace ProjetoMinsait.Controllers
     [ApiController]
     public class OnibusController : ControllerBase
     {
-
         private readonly IOnibusRepositorio _onibusRepositorio;
 
         public OnibusController(IOnibusRepositorio onibusRepositorio)
@@ -81,6 +80,5 @@ namespace ProjetoMinsait.Controllers
             string resultado = await _onibusRepositorio.VincularPassagem(idOnibus, idPassagem);
             return Ok(resultado);
         }
-
     }
 }

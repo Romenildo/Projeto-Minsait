@@ -14,7 +14,6 @@ namespace ProjetoMinsait.Data.Map
             builder.Property(x => x.Rg).IsRequired().HasMaxLength(15);
             builder.Property(x => x.Cnh).IsRequired().HasMaxLength(12);
             builder.HasOne(x => x.Onibus).WithOne(x => x.Motorista).HasForeignKey<Motorista>(fk => fk.OnibusId);
-
         }
     }
 }

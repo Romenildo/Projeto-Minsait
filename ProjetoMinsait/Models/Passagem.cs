@@ -23,7 +23,5 @@ namespace ProjetoMinsait.Models
         public Guid? OnibusId { get; set; }
         [JsonIgnore]
         public virtual Onibus? Onibus { get; set; }
-
-
     }
 }

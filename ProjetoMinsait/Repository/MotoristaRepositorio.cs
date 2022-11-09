@@ -32,7 +32,6 @@ namespace ProjetoMinsait.Repository
             return await _dbcontext.Motoristas
                    .Select(x => new MotoristaDto { Id = x.Id, Nome = x.Nome, Sobrenome = x.Sobrenome, Rg = x.Rg,Cnh = x.Cnh, Contato = x.Contato, DataNascimento = x.DataNascimento, Salario = x.Salario })
                    .ToListAsync();
-
         }
 
         public async Task<MotoristaDto> Adicionar(Motorista motorista)
@@ -64,6 +63,7 @@ namespace ProjetoMinsait.Repository
             }
 
             motoristaBd.Nome = motorista.Nome;
+            motoristaBd.Sobrenome = motorista.Sobrenome;
             motoristaBd.Rg = motorista.Rg;
             motoristaBd.DataNascimento = motorista.DataNascimento;
             motoristaBd.Contato = motorista.Contato;
@@ -76,7 +76,6 @@ namespace ProjetoMinsait.Repository
 
             var resultadoDto = _mapper.Map<MotoristaDto>(motoristaBd);
             return resultadoDto;
-
         }
 
         public async Task<string> Deletar(Guid id)

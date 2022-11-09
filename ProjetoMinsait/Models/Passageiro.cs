@@ -15,7 +15,6 @@ namespace ProjetoMinsait.Models
         public virtual Passagem? Passagem { get; set; }
         [JsonIgnore]
         public double ValorPassagem { get; set; } = 0.0;
-        
 
         public double CalcularValorPassagem(double valorTotal) 
         {
@@ -23,14 +22,13 @@ namespace ProjetoMinsait.Models
             {
                 valorTotal += 4.50;
             }
+
             if (Tipo.Equals((TipoTarifa)2)) 
             {
                 valorTotal /= 2;
             }
             return valorTotal;
         }
-
-
 
     }
 }

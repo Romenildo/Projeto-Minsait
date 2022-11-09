@@ -1,7 +1,4 @@
-﻿using ProjetoMinsait.Enums;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-
+﻿
 namespace ProjetoMinsait.Models.Dtos
 {
     public class OnibusDto
@@ -11,6 +8,5 @@ namespace ProjetoMinsait.Models.Dtos
         public virtual Cobrador? Cobrador { get; set; }
         public virtual Motorista? Motorista { get; set; }
         public virtual Passagem? Passagem { get; set; }
-
     }
 }

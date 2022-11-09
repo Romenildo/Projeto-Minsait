@@ -24,7 +24,6 @@ namespace ProjetoMinsait.Repository
             var resultado = await _dbcontext.Passageiros.FirstOrDefaultAsync(x => x.Id == id);
             var resultadoDto = _mapper.Map<PassageiroDto>(resultado);
             return resultadoDto;
-
         }
 
         public async Task<List<PassageiroDto>> BuscarTodosPassageiros()
@@ -64,6 +63,7 @@ namespace ProjetoMinsait.Repository
             }
 
             passageiroBd.Nome = passageiro.Nome;
+            passageiroBd.Sobrenome = passageiro.Sobrenome;
             passageiroBd.Rg = passageiro.Rg;
             passageiroBd.DataNascimento = passageiro.DataNascimento;
             passageiroBd.Contato = passageiro.Contato;
@@ -76,7 +76,6 @@ namespace ProjetoMinsait.Repository
 
             var resultadoDto = _mapper.Map<PassageiroDto>(passageiroBd);
             return resultadoDto;
-
         }
 
         public async Task<string> Deletar(Guid id)
@@ -92,6 +91,7 @@ namespace ProjetoMinsait.Repository
 
             return "Passageiro deletado com sucesso!";
         }
+
         public async Task<string> ComprarPassagem(string nomePassageiro, Guid idPassagem)
         {
             Passagem passagemBd = await _dbcontext.Passagem.Where(x => x.Id == idPassagem).FirstOrDefaultAsync();
@@ -122,6 +122,7 @@ namespace ProjetoMinsait.Repository
                    $"Horário de Embarque: {passagemBd.HorarioSaida}\n"+
                    $"Valor a Pagar: R$ {passageiroBd.ValorPassagem}.";
         }
+
         public async Task<string> CancelarPassagem(string nomePassageiro, Guid idPassagem)
         {
             Passagem passagemBd = await _dbcontext.Passagem.Where(x => x.Id == idPassagem).FirstOrDefaultAsync();

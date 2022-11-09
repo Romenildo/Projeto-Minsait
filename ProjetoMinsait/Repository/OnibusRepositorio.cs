@@ -31,7 +31,6 @@ namespace ProjetoMinsait.Repository
             return await _dbcontext.Onibus
                    .Select(x => new OnibusDto { Id = x.Id,NomeViacao = x.NomeViacao,Cobrador = x.Cobrador, Motorista = x.Motorista, Passagem = x.Passagem })
                    .ToListAsync();
-
         }
 
         public async Task<OnibusDto> Adicionar(Onibus onibus)
@@ -60,7 +59,6 @@ namespace ProjetoMinsait.Repository
 
             var resultadoDto = _mapper.Map<OnibusDto>(onibusBd);
             return resultadoDto;
-
         }
 
         public async Task<string> Deletar(Guid id)
@@ -77,7 +75,6 @@ namespace ProjetoMinsait.Repository
             return "Onibus Deletado Com sucesso";
         }
 
-        //Relacionamentos
         public async Task<string> VincularCobrador(Guid idOnibus, string nomeCobrador)
         {
             Onibus onibusBd = await _dbcontext.Onibus.Where(x => x.Id == idOnibus).FirstOrDefaultAsync();

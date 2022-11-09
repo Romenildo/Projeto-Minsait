@@ -1,7 +1,4 @@
-﻿using ProjetoMinsait.Enums;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-
+﻿
 namespace ProjetoMinsait.Models.Dtos
 {
     public class PassageiroDto
@@ -17,6 +14,5 @@ namespace ProjetoMinsait.Models.Dtos
         public int? Assento { get; set; }
         public Passagem? Passagem { get; set; }
         public double ValorPassagem { get; set; }
-
     }
 }

@@ -1,7 +1,4 @@
-﻿using ProjetoMinsait.Enums;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-
+﻿
 namespace ProjetoMinsait.Models.Dtos
 {
     public class PassagemDto
@@ -12,6 +9,5 @@ namespace ProjetoMinsait.Models.Dtos
         public string? HorarioSaida { get; set; }
         public string? HorarioChegada { get; set; }
         public double PrecoPassagem { get; set; }
-
     }
 }
