@@ -25,12 +25,59 @@ Tema: livre de sua Escolha.
  Consistem em um Sistema de controle de Onibus de uma Rodoviaria. Onde pode vincular ônibus, Motoristas, Passageiros e Passagens;
  E assim gerenciando as importantes informações sobre as viagens e passageiros nos ônibus.
 
- ## Como executar no docker-compose
- 
- ```
-  ... Em Desenvolvimento(falta docker-compose e .dotenv)
+ # Como executar no docker Compose
+
+
+## Pre-requisitos
+
+- Docker Engine 19.03.7+
+
+    - **Linux:** Follow all the steps present in the [official documentation](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)
+
+    - **Windows:** Follow all the steps present in the [official documentation](https://docs.docker.com/docker-for-windows/install/#about-windows-containers)
+- Docker Compose 1.25.4+
+    -  Follow all the steps present in the [official documentation](https://docs.docker.com/compose/install/)
+
+## Clonando o projeto
+
+* Clone
+```sh
+git clone https://github.com/Romenildo/Projeto-Minsait.git
+
+Ou com SSH
+
+git clone git@github.com:Romenildo/Projeto-Minsait.git
+```
+
+## Environment variables
+
+O arquivo `.env.example` especifica todas as variáveis de ambiente necessárias, copie e cole com o arquivo ` .env.example` chamado` .env` para fazer o Docker Compose usar as variáveis de ambiente definidas neste arquivo:
+
+```sh
+cp .env.example .env
+```
+
+## Construindo e iniciando o Container
+
+```sh
+docker-compose up --build
  ```
 
+Ele irá construir os containers e rodar a plataforma conforme especificado no arquivo `docker-compose.yml`, abrindo uma tela de log com os logs de todos os serviços iniciados.
+
+##### Parando a Execução
+
+
+Para parar todos os containers criados pelo docker-compose, você precisa ir até a pasta onde está o docker-compose.yml e executar:
+```sh
+docker-compose down
+ ```
+
+Para parar somente um container:
+
+```ssh
+docker stop my_container
+ ```
  
  # Documentação
  
