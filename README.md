@@ -94,10 +94,7 @@ docker-compose up --build
 
 Ele irá construir os containers e rodar a plataforma conforme especificado no arquivo `docker-compose.yml`, abrindo uma tela de log com os logs de todos os serviços iniciados.
 
- ```
-
 ##### Parando a Execução
-
 
 Para parar todos os containers criados pelo docker-compose, você precisa ir até a pasta onde está o docker-compose.yml e executar:
 ```sh
