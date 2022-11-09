@@ -1,5 +1,5 @@
 # Projeto-Minsait
-Formação .Net e Angular - Minsait/Uniesp 10/202  
+Formação .Net e Angular - Minsait/Uniesp 10/2022   
 Ministrada pelo Professor:  [Rodolpho Pedra](https://www.linkedin.com/in/rodolphopedra/)
 ---
 Esté repositorio é destinado para aplicação back and de desenvolver uma API utilizando dotnet 6 com Swagger, acesso ao banco de dados com Entity Framework.   
@@ -138,4 +138,6 @@ docker stop my_container
 [conexão com docker: video](https://www.youtube.com/watch?v=VbEhMVcWOFs&t=605s&ab_channel=JoseCarlosMacoratti)   
 [docker](https://docs.docker.com/samples/dotnet/)   
 [docker-compose](https://docs.docker.com/compose/)   
+
+[Enviroments](https://www.youtube.com/watch?v=lZOS27CwFT0&t=87s&ab_channel=RobertsDevTalk)
 

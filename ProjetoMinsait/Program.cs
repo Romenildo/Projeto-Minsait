@@ -18,12 +18,16 @@ namespace ProjetoMinsait
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            //docker
-            var server = builder.Configuration["DbServer"] ?? "sqldata";
-            var port = builder.Configuration["DbPort"] ?? "1450";
-            var user = builder.Configuration["DbUser"] ?? "romDb";
-            var password = builder.Configuration["Password"] ?? "romDb12345";
-            var database = builder.Configuration["Database"] ?? "LivrosDb";
+
+
+            //docker e .env
+            DotNetEnv.Env.Load();
+
+            var server = builder.Configuration["DbServer"] ?? Environment.GetEnvironmentVariable("SQL_DB_SERVER");
+            var port = builder.Configuration["DbPort"] ?? Environment.GetEnvironmentVariable("SQL_DB_PORT");
+            var user = builder.Configuration["DbUser"] ?? Environment.GetEnvironmentVariable("SQL_DB_USER");
+            var password = builder.Configuration["Password"] ?? Environment.GetEnvironmentVariable("SQL_DB_PASS");
+            var database = builder.Configuration["Database"] ?? Environment.GetEnvironmentVariable("SQL_DB_DATABASE");
 
             //--- connection with sql server ---
 
