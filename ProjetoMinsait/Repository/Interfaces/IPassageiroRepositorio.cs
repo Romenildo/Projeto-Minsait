@@ -11,5 +11,6 @@ namespace ProjetoMinsait.Repository.Interfaces
         Task<PassageiroDto> Atualizar(Guid id, Passageiro passageiro);
         Task<string> Deletar(Guid id);
         Task<string> ComprarPassagem(string nomePassageiro, Guid idPassagem);
+        Task<string> CancelarPassagem(string nomePassageiro, Guid idPassagem);
     }
 }

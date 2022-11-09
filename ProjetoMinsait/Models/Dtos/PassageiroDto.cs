@@ -16,6 +16,7 @@ namespace ProjetoMinsait.Models.Dtos
         public bool? Seguro { get; set; }
         public int? Assento { get; set; }
         public Passagem? Passagem { get; set; }
+        public double ValorPassagem { get; set; }
 
     }
 }

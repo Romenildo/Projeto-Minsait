@@ -101,7 +101,7 @@ namespace ProjetoMinsait.Repository
             passageiroBd.Passagem = passagemBd;
             passagemBd.Passageiros?.Add(passageiroBd);
 
-            passageiroBd.Passagem.PrecoPassagem = passageiroBd.CalcularValorPassagem(passagemBd.PrecoPassagem);
+            passageiroBd.ValorPassagem = passageiroBd.CalcularValorPassagem(passagemBd.PrecoPassagem);
 
              _dbcontext.Passageiros.Update(passageiroBd);
             _dbcontext.Passagem.Update(passagemBd);
@@ -109,6 +109,30 @@ namespace ProjetoMinsait.Repository
             await _dbcontext.SaveChangesAsync();
 
             return "Passagem cadastrada com sucesso";
+        }
+        public async Task<string> CancelarPassagem(string nomePassageiro, Guid idPassagem)
+        {
+            Passagem passagemBd = await _dbcontext.Passagem.Where(x => x.Id == idPassagem).FirstOrDefaultAsync();
+            Passageiro passageiroBd = await _dbcontext.Passageiros.Where(x => x.NomeCompleto == nomePassageiro).FirstOrDefaultAsync();
+
+            if (passageiroBd == null)
+            {
+                throw new Exception($"Passageiro: {nomePassageiro} não encontrado!");
+            }
+            if (passagemBd == null)
+            {
+                throw new Exception($"Passagem com Id: {passagemBd} não encontrado!");
+            }
+            passagemBd.Passageiros?.Remove(passageiroBd);
+            passageiroBd.Passagem = null;
+            passageiroBd.ValorPassagem = 0.0;
+
+            _dbcontext.Passageiros.Update(passageiroBd);
+            _dbcontext.Passagem.Update(passagemBd);
+
+            await _dbcontext.SaveChangesAsync();
+
+            return "Passagem cancelada com sucesso";
         }
     }
 }

@@ -3,6 +3,7 @@ using ProjetoMinsait.Models;
 using ProjetoMinsait.Models.Dtos;
 using ProjetoMinsait.Repository.Interfaces;
 
+
 namespace ProjetoMinsait.Controllers
 {
     [Route("v1/api/[controller]")]
@@ -65,6 +66,13 @@ namespace ProjetoMinsait.Controllers
         public async Task<ActionResult<string>> ComprarPassagem(string nomeSobrenome, Guid idPassagem)
         {
             string resultado = await _passageiroRepositorio.ComprarPassagem(nomeSobrenome, idPassagem);
+            return Ok(resultado);
+        }
+
+        [HttpPut("{nomeSobrenome}/CancelarPassagem/{idPassagem}")]
+        public async Task<ActionResult<string>> CancelarPassagem(string nomeSobrenome, Guid idPassagem)
+        {
+            string resultado = await _passageiroRepositorio.CancelarPassagem(nomeSobrenome, idPassagem);
             return Ok(resultado);
         }
 
