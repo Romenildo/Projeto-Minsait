@@ -25,6 +25,30 @@ Tema: livre de sua Escolha.
  Consistem em um Sistema de controle de Onibus de uma Rodoviaria. Onde pode vincular ônibus, Motoristas, Passageiros e Passagens;
  E assim gerenciando as importantes informações sobre as viagens e passageiros nos ônibus.
 
+
+
+
+ # Como executar no docker Compose
+
+ É necessario ter o SQL Server já instalado e criar um Banco de dados com nome DB_minsait  
+   
+- [Sql Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)
+- Gerenciador do SQL Server : [SQL Server Management Studio](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
+   
+ Alterar a string de conexãodo banco de dados no arquivo: *Program.cs* para   
+ ´´´sh
+            //local
+            var connectionStringDB = builder.Configuration.GetConnectionString("DataBase");
+
+            //Docker
+            //var connectionStringDbDocker = $"Server={server}, {port};atabase={database};User={user};Password={password}";
+            builder.Services.AddDbContext<DataContext>(
+                    options => options.UseSqlServer(connectionStringDB)
+                );
+´´´
+
+Após isso só executá-lo no Visual Studio normalmente.   
+
  # Como executar no docker Compose
 
 
@@ -32,11 +56,11 @@ Tema: livre de sua Escolha.
 
 - Docker Engine 19.03.7+
 
-    - **Linux:** Follow all the steps present in the [official documentation](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)
+    - **Linux:** Seguindo os Passos da Documentação Oficial:  [official documentation](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)
 
-    - **Windows:** Follow all the steps present in the [official documentation](https://docs.docker.com/docker-for-windows/install/#about-windows-containers)
+    - **Windows:** Seguindo os Passos da Documentação Oficial: [official documentation](https://docs.docker.com/docker-for-windows/install/#about-windows-containers)
 - Docker Compose 1.25.4+
-    -  Follow all the steps present in the [official documentation](https://docs.docker.com/compose/install/)
+    -  Seguindo os Passos da Documentação Oficial: [official documentation](https://docs.docker.com/compose/install/)
 
 ## Clonando o projeto
 

@@ -37,8 +37,15 @@ namespace ProjetoMinsait.Repository
 
         public async Task<CobradorDto> Adicionar(Cobrador cobrador)
         {
+            string nomeCompleto = cobrador.GetNomeCompleto();
+            Cobrador cobradorBd = await _dbcontext.Cobradores.Where(x => x.NomeCompleto == nomeCompleto).FirstOrDefaultAsync();
+
+            if (cobradorBd != null)
+            {
+                throw new Exception($"Cobrador com nome  {nomeCompleto} já esta cadastrado!");
+            }
             cobrador.Id = new Guid();
-            cobrador.NomeCompleto = cobrador.GetNomeCompleto();
+            cobrador.NomeCompleto = nomeCompleto;
 
             await _dbcontext.Cobradores.AddAsync(cobrador);
             await _dbcontext.SaveChangesAsync();

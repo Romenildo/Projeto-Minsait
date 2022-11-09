@@ -36,8 +36,16 @@ namespace ProjetoMinsait.Repository
 
         public async Task<PassageiroDto> Adicionar(Passageiro passageiro)
         {
+            string nomeCompleto = passageiro.GetNomeCompleto();
+            Passageiro passageiroBd = await _dbcontext.Passageiros.Where(x => x.NomeCompleto == nomeCompleto).FirstOrDefaultAsync();
+
+            if (passageiroBd != null)
+            {
+                throw new Exception($"Passageiro com nome  {nomeCompleto} já esta cadastrado!");
+            }
+
             passageiro.Id = new Guid();
-            passageiro.NomeCompleto = passageiro.GetNomeCompleto();
+            passageiro.NomeCompleto = nomeCompleto;
 
             await _dbcontext.Passageiros.AddAsync(passageiro);
             await _dbcontext.SaveChangesAsync();
