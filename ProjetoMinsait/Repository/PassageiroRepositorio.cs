@@ -116,7 +116,11 @@ namespace ProjetoMinsait.Repository
 
             await _dbcontext.SaveChangesAsync();
 
-            return "Passagem cadastrada com sucesso";
+            return " ---Passagem cadastrada com sucesso ---\n" +
+                   $"Nome: {passageiroBd.NomeCompleto} \n" +
+                   $"Destino: De: {passagemBd.DestinoSaida} para: {passagemBd.DestinoChegada}\n" +
+                   $"Horário de Embarque: {passagemBd.HorarioSaida}\n"+
+                   $"Valor a Pagar: R$ {passageiroBd.ValorPassagem}.";
         }
         public async Task<string> CancelarPassagem(string nomePassageiro, Guid idPassagem)
         {

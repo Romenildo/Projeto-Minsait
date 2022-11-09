@@ -28,13 +28,13 @@ Tema: livre de sua Escolha.
 
 
 
- # Como executar no docker Compose
+ # Como executar localmente
 
- É necessario ter o SQL Server já instalado e criar um Banco de dados com nome DB_minsait  
+ É necessario ter o SQL Server já instalado e criar um Banco de dados com nome *DB_minsait*     
    
-- [Sql Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)
+- [Sql Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)   
 - Gerenciador do SQL Server : [SQL Server Management Studio](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
-   
+     
  Alterar a string de conexãodo banco de dados no arquivo: *Program.cs* para   
  ´´´sh
             //local
@@ -133,7 +133,7 @@ docker stop my_container
 - Req_10: CRUD de Passagens deve gerar um qrCode final com as informações para o Passageiro;
 - Req_11: CRUD de Passageiros;✔️
 - Req_12: CRUD de Passageiros podem comprar passagens;✔️
-- Req_13: CRUD de Passageiros podem cancelar sua passagem;
+- Req_13: CRUD de Passageiros podem cancelar sua passagem;✔️
 - Req_14: CRUD de Passageiros deve possuir a opçao de querer seguro(taxa: 4.50) ou não;✔️
 - Req_15: CRUD de Passageiros com tipo de tarifa (Estudante) possuem 50% de desconto no proço final da passagem;✔️
 
@@ -168,8 +168,11 @@ docker stop my_container
    
 [conexão com docker: video](https://www.youtube.com/watch?v=VbEhMVcWOFs&t=605s&ab_channel=JoseCarlosMacoratti)   
 [docker](https://docs.docker.com/samples/dotnet/)   
-[docker-compose](https://docs.docker.com/compose/) 
+[docker-compose](https://docs.docker.com/compose/)    
 [docker-compose 2](https://blog.christian-schou.dk/dockerize-net-core-web-api-with-ms-sql-server/)  
 
 [Enviroments](https://www.youtube.com/watch?v=lZOS27CwFT0&t=87s&ab_channel=RobertsDevTalk)
+   
+[qrcode(balta.io)](https://balta.io/blog/aspnet-qrcode)    
+[qrcode](https://www.macoratti.net/20/01/aspc_qrcode1.htm)   
 

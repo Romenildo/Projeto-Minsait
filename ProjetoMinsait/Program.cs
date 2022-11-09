@@ -36,7 +36,7 @@ namespace ProjetoMinsait
             //var connectionStringDB = builder.Configuration.GetConnectionString("DataBase");
 
             //Docker
-            var connectionStringDbDocker = $"Server={server}, {port};atabase={database};User={user};Password={password}";
+            var connectionStringDbDocker = $"Server={server}, {port};Database={database};User={user};Password={password}";
             builder.Services.AddDbContext<DataContext>(
                     options => options.UseSqlServer(connectionStringDbDocker)
                 );
