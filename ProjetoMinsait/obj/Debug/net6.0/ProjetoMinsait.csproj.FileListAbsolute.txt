@@ -126,3 +126,4 @@ C:\Users\romen\OneDrive\Área de Trabalho\Indra\Projeto-Minsait\ProjetoMinsait\b
 C:\Users\romen\OneDrive\Área de Trabalho\Indra\Projeto-Minsait\ProjetoMinsait\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\romen\OneDrive\Área de Trabalho\Indra\Projeto-Minsait\ProjetoMinsait\bin\Debug\net6.0\DotNetEnv.dll
 C:\Users\romen\OneDrive\Área de Trabalho\Indra\Projeto-Minsait\ProjetoMinsait\bin\Debug\net6.0\Sprache.dll
+C:\Users\romen\OneDrive\Área de Trabalho\Indra\Projeto-Minsait\ProjetoMinsait\bin\Debug\net6.0\QRCoder.dll

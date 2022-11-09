@@ -33,12 +33,12 @@ namespace ProjetoMinsait
             //--- connection with sql server ---
 
             //local
-            //var connectionStringDB = builder.Configuration.GetConnectionString("DataBase");
+            var connectionStringDB = builder.Configuration.GetConnectionString("DataBase");
 
             //Docker
-            var connectionStringDbDocker = $"Server={server}, {port};Database={database};User={user};Password={password}";
+            //var connectionStringDbDocker = $"Server={server}, {port};Database={database};User={user};Password={password}";
             builder.Services.AddDbContext<DataContext>(
-                    options => options.UseSqlServer(connectionStringDbDocker)
+                    options => options.UseSqlServer(connectionStringDB)
                 );
 
 

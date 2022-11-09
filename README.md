@@ -36,16 +36,16 @@ Tema: livre de sua Escolha.
 - Gerenciador do SQL Server : [SQL Server Management Studio](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
      
  Alterar a string de conexãodo banco de dados no arquivo: *Program.cs* para   
- ´´´sh
-            //local
-            var connectionStringDB = builder.Configuration.GetConnectionString("DataBase");
+```sh
+//local
+var connectionStringDB = builder.Configuration.GetConnectionString("DataBase");
 
-            //Docker
-            //var connectionStringDbDocker = $"Server={server}, {port};atabase={database};User={user};Password={password}";
-            builder.Services.AddDbContext<DataContext>(
-                    options => options.UseSqlServer(connectionStringDB)
-                );
-´´´
+//Docker
+//var connectionStringDbDocker = $"Server={server}, {port};atabase={database};User={user};Password={password}";
+builder.Services.AddDbContext<DataContext>(
+    options => options.UseSqlServer(connectionStringDB)
+);
+```
 
 Após isso só executá-lo no Visual Studio normalmente.   
 
@@ -130,14 +130,12 @@ docker stop my_container
 - Req_07: CRUD de Passagens;✔️
 - Req_08: CRUD de Passagens deve possuir o valor de cada destino;✔️
 - Req_09: CRUD de Passagens na hora da compra deve calcular o seguro e tarifa do Passageiro;✔️
-- Req_10: CRUD de Passagens deve gerar um qrCode final com as informações para o Passageiro;
+- Req_10: CRUD de Passagens deve gerar um qrCode final com as informações para o Passageiro;✔️
 - Req_11: CRUD de Passageiros;✔️
 - Req_12: CRUD de Passageiros podem comprar passagens;✔️
 - Req_13: CRUD de Passageiros podem cancelar sua passagem;✔️
 - Req_14: CRUD de Passageiros deve possuir a opçao de querer seguro(taxa: 4.50) ou não;✔️
 - Req_15: CRUD de Passageiros com tipo de tarifa (Estudante) possuem 50% de desconto no proço final da passagem;✔️
-
-
 
 ## Caso de Uso
 

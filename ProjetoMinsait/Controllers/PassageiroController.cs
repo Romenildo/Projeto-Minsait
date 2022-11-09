@@ -63,10 +63,11 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpPut("{nomeSobrenome}/ComprarPassagem/{idPassagem}")]
-        public async Task<ActionResult<string>> ComprarPassagem(string nomeSobrenome, Guid idPassagem)
+        public async Task<IActionResult> ComprarPassagem(string nomeSobrenome, Guid idPassagem)
         {
             string resultado = await _passageiroRepositorio.ComprarPassagem(nomeSobrenome, idPassagem);
-            return Ok(resultado);
+            var image = QrCodeGenerator.GenerateByteArray(resultado);
+            return File(image, "image/jpeg");
         }
 
         [HttpPut("{nomeSobrenome}/CancelarPassagem/{idPassagem}")]

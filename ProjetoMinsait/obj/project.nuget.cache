@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Mkmcik/MvL2bWJdTP1nsdubHGLHk5FgB5WYwGI6wj+3c/fo+B08YhiRY8yf72myownyfI+Cxs16XQKihBmfOxA==",
+  "dgSpecHash": "KwJzFnywzgtDOa/LfRDb1n5HeQJomiYWcv8DXFdvgqZYf5MfM1iZ2Ky2JQPfy1e5b/bj2yFta4oz99jXhdPkVA==",
   "success": true,
   "projectFilePath": "C:\\Users\\romen\\OneDrive\\Área de Trabalho\\Indra\\Projeto-Minsait\\ProjetoMinsait\\ProjetoMinsait.csproj",
   "expectedPackageFiles": [
@@ -42,6 +42,7 @@
     "C:\\Users\\romen\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\romen\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\romen\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
+    "C:\\Users\\romen\\.nuget\\packages\\qrcoder\\1.4.1\\qrcoder.1.4.1.nupkg.sha512",
     "C:\\Users\\romen\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\romen\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\romen\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
