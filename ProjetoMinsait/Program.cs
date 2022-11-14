@@ -48,6 +48,8 @@ namespace ProjetoMinsait
             builder.Services.AddCors(opt => {
                 opt.AddPolicy("CorsPolicy", builder => builder
                 .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod()
                 
                 );
             });
