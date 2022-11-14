@@ -11,5 +11,6 @@ namespace ProjetoMinsait.Models.Dtos
         public string? Contato { get; set; }
         public string? Cnh { get; set; }
         public double Salario { get; set; }
+        public string? Imagem { get; set; }
     }
 }

@@ -29,12 +29,12 @@ namespace ProjetoMinsait
 
             //--- connection with sql server ---
             //local
-            //var connectionStringDB = builder.Configuration.GetConnectionString("DataBase");
+            var connectionStringDB = builder.Configuration.GetConnectionString("DataBase");
 
             //Docker
-            var connectionStringDbDocker = $"Server={server}, {port};Database={database};User={user};Password={password}";
+            //var connectionStringDbDocker = $"Server={server}, {port};Database={database};User={user};Password={password}";
             builder.Services.AddDbContext<DataContext>(
-                    options => options.UseSqlServer(connectionStringDbDocker)
+                    options => options.UseSqlServer(connectionStringDB)
                 );
 
             //injecoes de dependencias
@@ -44,6 +44,14 @@ namespace ProjetoMinsait
             builder.Services.AddScoped<IOnibusRepositorio, OnibusRepositorio>();
             builder.Services.AddScoped<IPassagemRepositorio, PassagemRepositorio>();
 
+
+            builder.Services.AddCors(opt => {
+                opt.AddPolicy("CorsPolicy", builder => builder
+                .AllowAnyOrigin()
+                
+                );
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -52,6 +60,8 @@ namespace ProjetoMinsait
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 
