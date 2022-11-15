@@ -55,9 +55,9 @@ namespace ProjetoMinsait.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<string>> Deletar(Guid id)
+        public async Task<ActionResult<Boolean>> Deletar(Guid id)
         {
-            string resultado = await _passageiroRepositorio.Deletar(id);
+            Boolean resultado = await _passageiroRepositorio.Deletar(id);
             return Ok(resultado);
         }
 

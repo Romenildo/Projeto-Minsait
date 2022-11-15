@@ -78,7 +78,7 @@ namespace ProjetoMinsait.Repository
             return resultadoDto;
         }
 
-        public async Task<string> Deletar(Guid id)
+        public async Task<Boolean> Deletar(Guid id)
         {
             Cobrador cobradorBd = await _dbcontext.Cobradores.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -89,7 +89,7 @@ namespace ProjetoMinsait.Repository
             _dbcontext.Cobradores.Remove(cobradorBd);
             await _dbcontext.SaveChangesAsync();
 
-            return "Cobrador deletado com sucesso!";
+            return true;
         }
     }
 }

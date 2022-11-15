@@ -61,7 +61,7 @@ namespace ProjetoMinsait.Repository
             return resultadoDto;
         }
 
-        public async Task<string> Deletar(Guid id)
+        public async Task<Boolean> Deletar(Guid id)
         {
             Onibus onibusBd = await _dbcontext.Onibus.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -72,7 +72,7 @@ namespace ProjetoMinsait.Repository
             _dbcontext.Onibus.Remove(onibusBd);
             await _dbcontext.SaveChangesAsync();
 
-            return "Onibus Deletado Com sucesso";
+            return true;
         }
 
         public async Task<string> VincularCobrador(Guid idOnibus, string nomeCobrador)

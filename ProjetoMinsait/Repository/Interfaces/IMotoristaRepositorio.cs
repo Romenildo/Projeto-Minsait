@@ -9,6 +9,6 @@ namespace ProjetoMinsait.Repository.Interfaces
         Task<MotoristaDto> BuscarPorID(Guid id);
         Task<MotoristaDto> Adicionar(Motorista motorista);
         Task<MotoristaDto> Atualizar(Guid id, Motorista motorista);
-        Task<string> Deletar(Guid id);
+        Task<Boolean> Deletar(Guid id);
     }
 }

@@ -9,6 +9,6 @@ namespace ProjetoMinsait.Repository.Interfaces
         Task<CobradorDto> BuscarPorID(Guid id);
         Task<CobradorDto> Adicionar(Cobrador cobrador);
         Task<CobradorDto> Atualizar(Guid id, Cobrador cobrador);
-        Task<string> Deletar(Guid id);
+        Task<Boolean> Deletar(Guid id);
     }
 }

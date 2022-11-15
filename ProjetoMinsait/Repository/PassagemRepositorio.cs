@@ -62,7 +62,7 @@ namespace ProjetoMinsait.Repository
 
         }
 
-        public async Task<string> Deletar(Guid id)
+        public async Task<Boolean> Deletar(Guid id)
         {
             Passagem passagemBd = await _dbcontext.Passagem.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -73,7 +73,7 @@ namespace ProjetoMinsait.Repository
             _dbcontext.Passagem.Remove(passagemBd);
             await _dbcontext.SaveChangesAsync();
 
-            return "Passagem Deletada com sucesso!";
+            return true;
         }
 
     }

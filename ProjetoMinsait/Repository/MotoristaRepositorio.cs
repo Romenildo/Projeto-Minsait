@@ -79,7 +79,7 @@ namespace ProjetoMinsait.Repository
             return resultadoDto;
         }
 
-        public async Task<string> Deletar(Guid id)
+        public async Task<Boolean> Deletar(Guid id)
         {
             Motorista? motoristaBd = await _dbcontext.Motoristas.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -90,7 +90,7 @@ namespace ProjetoMinsait.Repository
             _dbcontext.Motoristas.Remove(motoristaBd);
             await _dbcontext.SaveChangesAsync();
 
-            return "Deletado com sucesso";
+            return true;
         }
     }
 }

@@ -78,7 +78,7 @@ namespace ProjetoMinsait.Repository
             return resultadoDto;
         }
 
-        public async Task<string> Deletar(Guid id)
+        public async Task<Boolean> Deletar(Guid id)
         {
             Passageiro passageiroBd = await _dbcontext.Passageiros.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -89,7 +89,7 @@ namespace ProjetoMinsait.Repository
             _dbcontext.Passageiros.Remove(passageiroBd);
             await _dbcontext.SaveChangesAsync();
 
-            return "Passageiro deletado com sucesso!";
+            return true;
         }
 
         public async Task<string> ComprarPassagem(string nomePassageiro, Guid idPassagem)
@@ -145,7 +145,7 @@ namespace ProjetoMinsait.Repository
 
             await _dbcontext.SaveChangesAsync();
 
-            return "Passagem cancelada com sucesso";
+            return "Passagem Cancelada";
         }
     }
 }

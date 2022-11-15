@@ -9,6 +9,6 @@ namespace ProjetoMinsait.Repository.Interfaces
         Task<PassagemDto> BuscarPorID(Guid id);
         Task<PassagemDto> Adicionar(Passagem passagem);
         Task<PassagemDto> Atualizar(Guid id, Passagem passagem);
-        Task<string> Deletar(Guid id);
+        Task<Boolean> Deletar(Guid id);
     }
 }
