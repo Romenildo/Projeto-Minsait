@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjetoMinsait.Enums;
 using ProjetoMinsait.Models;
 using ProjetoMinsait.Models.Dtos;
 using ProjetoMinsait.Repository.Interfaces;
@@ -38,6 +39,7 @@ namespace ProjetoMinsait.Controllers
             {
                 return BadRequest();
             }
+            passageiro.Tipo = (TipoTarifa)passageiro.Tipo;
             PassageiroDto resultado = await _passageiroRepositorio.Adicionar(passageiro);
             return Created($"v1/api/passageiro/{resultado.Id}", resultado);
         }
@@ -61,12 +63,14 @@ namespace ProjetoMinsait.Controllers
             return Ok(resultado);
         }
 
-        [HttpPut("{nomeSobrenome}/ComprarPassagem/{idPassagem}")]
-        public async Task<IActionResult> ComprarPassagem(string nomeSobrenome, Guid idPassagem)
+        [HttpGet("{nomeSobrenome}/ComprarPassagem/{idPassagem}")]
+        public async Task<ActionResult> ComprarPassagem(string nomeSobrenome, Guid idPassagem)
         {
             string resultado = await _passageiroRepositorio.ComprarPassagem(nomeSobrenome, idPassagem);
             var image = QrCodeGenerator.GenerateByteArray(resultado);
+           
             return File(image, "image/jpeg");
+
         }
 
         [HttpPut("{nomeSobrenome}/CancelarPassagem/{idPassagem}")]
