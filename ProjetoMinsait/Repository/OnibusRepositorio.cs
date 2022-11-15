@@ -35,6 +35,13 @@ namespace ProjetoMinsait.Repository
 
         public async Task<OnibusDto> Adicionar(Onibus onibus)
         {
+            Onibus onibusBd = await _dbcontext.Onibus.FirstOrDefaultAsync(x => x.NomeViacao == onibus.NomeViacao) ;
+
+            if (onibusBd == null)
+            {
+                throw new Exception($"Onibus com Viacao Nome: {onibus.NomeViacao} Já cadastrado!");
+            }
+
             onibus.Id = new Guid();
             await _dbcontext.Onibus.AddAsync(onibus);
             await _dbcontext.SaveChangesAsync();

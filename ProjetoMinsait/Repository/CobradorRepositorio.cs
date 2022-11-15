@@ -30,7 +30,7 @@ namespace ProjetoMinsait.Repository
         public async Task<List<CobradorDto>> BuscarTodosCobradores()
         {
             return await _dbcontext.Cobradores
-                   .Select(x => new CobradorDto { Id = x.Id, Nome = x.Nome, Sobrenome = x.Sobrenome, Rg = x.Rg,Contato = x.Contato,DataNascimento = x.DataNascimento, Salario = x.Salario, Imagem = x.Imagem })
+                   .Select(x => new CobradorDto { Id = x.Id, Nome = x.Nome, Sobrenome = x.Sobrenome, Rg = x.Rg,Contato = x.Contato,DataNascimento = x.DataNascimento, Salario = x.Salario, Imagem = x.Imagem, Onibus = x.Onibus })
                    .ToListAsync();
         }
 

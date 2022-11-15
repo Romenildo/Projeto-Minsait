@@ -30,7 +30,7 @@ namespace ProjetoMinsait.Repository
         public async Task<List<MotoristaDto>> BuscarTodosMotoristas()
         {
             return await _dbcontext.Motoristas
-                   .Select(x => new MotoristaDto { Id = x.Id, Nome = x.Nome, Sobrenome = x.Sobrenome, Rg = x.Rg,Cnh = x.Cnh, Contato = x.Contato, DataNascimento = x.DataNascimento, Salario = x.Salario, Imagem = x.Imagem })
+                   .Select(x => new MotoristaDto { Id = x.Id, Nome = x.Nome, Sobrenome = x.Sobrenome, Rg = x.Rg,Cnh = x.Cnh, Contato = x.Contato, DataNascimento = x.DataNascimento, Salario = x.Salario, Imagem = x.Imagem, Onibus = x.Onibus })
                    .ToListAsync();
         }
 

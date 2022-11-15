@@ -60,21 +60,21 @@ namespace ProjetoMinsait.Controllers
             return Ok(resultado);
         }
         
-        [HttpPut("{idOnibus}/vincularCobrador/{nomeCobrador}")]
+        [HttpGet("{idOnibus}/vincularCobrador/{nomeCobrador}")]
         public async Task<ActionResult<string>> VicnularCobrador(Guid idOnibus, string nomeCobrador)
         {
             string resultado = await _onibusRepositorio.VincularCobrador(idOnibus, nomeCobrador);
             return Ok(resultado);
         }
 
-        [HttpPut("{idOnibus}/vincularMotorista/{nomeSobrenome}")]
+        [HttpGet("{idOnibus}/vincularMotorista/{nomeSobrenome}")]
         public async Task<ActionResult<string>> VicnularMotorista(Guid idOnibus, string nomeSobrenome)
         {
             string resultado = await _onibusRepositorio.VincularMotorista(idOnibus, nomeSobrenome);
             return Ok(resultado);
         }
 
-        [HttpPut("{idOnibus}/vincularPassagem/{idPassagem}")]
+        [HttpGet("{idOnibus}/vincularPassagem/{idPassagem}")]
         public async Task<ActionResult<string>> VicnularPassagem(Guid idOnibus, Guid idPassagem)
         {
             string resultado = await _onibusRepositorio.VincularPassagem(idOnibus, idPassagem);
