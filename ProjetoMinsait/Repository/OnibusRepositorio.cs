@@ -37,7 +37,7 @@ namespace ProjetoMinsait.Repository
         {
             Onibus onibusBd = await _dbcontext.Onibus.FirstOrDefaultAsync(x => x.NomeViacao == onibus.NomeViacao) ;
 
-            if (onibusBd == null)
+            if (onibusBd != null)
             {
                 throw new Exception($"Onibus com Viacao Nome: {onibus.NomeViacao} Já cadastrado!");
             }
