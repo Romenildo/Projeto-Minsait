@@ -87,6 +87,7 @@ namespace ProjetoMinsait.Repository
             {
                 throw new Exception($"Usuario com Id: {id} não encontrado!");
             }
+
             _dbcontext.Motoristas.Remove(motoristaBd);
             await _dbcontext.SaveChangesAsync();
 

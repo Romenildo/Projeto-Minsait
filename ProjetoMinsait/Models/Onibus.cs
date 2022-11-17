@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using ProjetoMinsait.Models.Dtos;
+using System.Text.Json.Serialization;
 
 namespace ProjetoMinsait.Models
 {

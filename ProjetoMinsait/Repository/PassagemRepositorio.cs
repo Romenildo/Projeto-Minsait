@@ -30,7 +30,7 @@ namespace ProjetoMinsait.Repository
         public async Task<List<PassagemDto>> BuscarTodasPassagens()
         {
             return await _dbcontext.Passagem
-                   .Select(x => new PassagemDto { Id = x.Id, DestinoChegada =x.DestinoChegada, DestinoSaida = x.DestinoSaida, HorarioChegada = x.HorarioChegada, HorarioSaida=x.HorarioSaida, PrecoPassagem = x.PrecoPassagem })
+                   .Select(x => new PassagemDto { Id = x.Id, DestinoChegada =x.DestinoChegada, DestinoSaida = x.DestinoSaida, HorarioChegada = x.HorarioChegada, HorarioSaida=x.HorarioSaida, PrecoPassagem = x.PrecoPassagem, Onibus = x.Onibus, Passageiros = x.Passageiros })
                    .ToListAsync();
         }
 
@@ -45,7 +45,7 @@ namespace ProjetoMinsait.Repository
             return resultadoDto;
         }
 
-        public async Task<PassagemDto> Atualizar(Guid id, Passagem Passagem)
+        public async Task<PassagemDto> Atualizar(Guid id, Passagem passagem)
         {
             Passagem passagemBd = await _dbcontext.Passagem.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -53,6 +53,11 @@ namespace ProjetoMinsait.Repository
             {
                 throw new Exception($"Usuario com Id: {id} não encontrado!");
             }
+            passagemBd.HorarioSaida = passagem.HorarioSaida;
+            passagemBd.HorarioChegada = passagem.HorarioChegada;
+            passagemBd.DestinoSaida = passagem.DestinoSaida;
+            passagemBd.DestinoChegada = passagem.DestinoChegada;
+            passagemBd.PrecoPassagem  = passagem.PrecoPassagem;
 
             _dbcontext.Passagem.Update(passagemBd);
             await _dbcontext.SaveChangesAsync();
@@ -70,6 +75,7 @@ namespace ProjetoMinsait.Repository
             {
                 throw new Exception($"Passagem com Id: {id} não encontrado!");
             }
+            
             _dbcontext.Passagem.Remove(passagemBd);
             await _dbcontext.SaveChangesAsync();
 

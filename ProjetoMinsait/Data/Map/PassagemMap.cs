@@ -9,8 +9,8 @@ namespace ProjetoMinsait.Data.Map
         public void Configure(EntityTypeBuilder<Passagem> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.HasMany(x => x.Passageiros).WithOne(x => x.Passagem);
-            builder.HasOne(x => x.Onibus).WithOne(x => x.Passagem).HasForeignKey<Passagem>(fk => fk.OnibusId);
+            builder.HasMany(x => x.Passageiros).WithOne(x => x.Passagem).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.Onibus).WithOne(x => x.Passagem).HasForeignKey<Passagem>(fk => fk.OnibusId).OnDelete(DeleteBehavior.SetNull); ;
         }
     }
 }

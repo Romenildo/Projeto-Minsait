@@ -82,7 +82,7 @@ namespace ProjetoMinsait.Repository
             return true;
         }
 
-        public async Task<string> VincularCobrador(Guid idOnibus, string nomeCobrador)
+        public async Task<OnibusDto> VincularCobrador(Guid idOnibus, string nomeCobrador)
         {
             Onibus onibusBd = await _dbcontext.Onibus.Where(x => x.Id == idOnibus).FirstOrDefaultAsync();
             Cobrador cobradorBd = await _dbcontext.Cobradores.Where(x => x.NomeCompleto == nomeCobrador).FirstOrDefaultAsync();
@@ -104,11 +104,12 @@ namespace ProjetoMinsait.Repository
             _dbcontext.Cobradores.Update(cobradorBd);
 
             await _dbcontext.SaveChangesAsync();
+            var resultadoDto = _mapper.Map<OnibusDto>(onibusBd);
 
-            return "Cobrador cadastrado com sucesso!";
+            return resultadoDto;
         }
 
-        public async Task<string> VincularMotorista(Guid idOnibus, string nomeMotorista)
+        public async Task<OnibusDto> VincularMotorista(Guid idOnibus, string nomeMotorista)
         {
             Onibus onibusBd = await _dbcontext.Onibus.Where(x => x.Id == idOnibus).FirstOrDefaultAsync();
             Motorista motoristaBd = await _dbcontext.Motoristas.Where(x => x.NomeCompleto == nomeMotorista).FirstOrDefaultAsync();
@@ -131,10 +132,12 @@ namespace ProjetoMinsait.Repository
 
             await _dbcontext.SaveChangesAsync();
 
-            return "Motorista cadastrado com sucesso!";
+            var resultadoDto = _mapper.Map<OnibusDto>(onibusBd);
+
+            return resultadoDto;
         }
 
-        public async Task<string> VincularPassagem(Guid idOnibus, Guid idPassagem)
+        public async Task<OnibusDto> VincularPassagem(Guid idOnibus, Guid idPassagem)
         {
             Onibus onibusBd = await _dbcontext.Onibus.Where(x => x.Id == idOnibus).FirstOrDefaultAsync();
             Passagem passagemBd = await _dbcontext.Passagem.Where(x => x.Id == idPassagem).FirstOrDefaultAsync();
@@ -157,7 +160,9 @@ namespace ProjetoMinsait.Repository
 
             await _dbcontext.SaveChangesAsync();
 
-            return "Passagem cadastrada com sucesso!";
+            var resultadoDto = _mapper.Map<OnibusDto>(onibusBd);
+
+            return resultadoDto;
         }
     }
 }

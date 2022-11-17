@@ -10,8 +10,8 @@ namespace ProjetoMinsait.Repository.Interfaces
         Task<OnibusDto> Adicionar(Onibus onibus);
         Task<OnibusDto> Atualizar(Guid id, Onibus onibus);
         Task<Boolean> Deletar(Guid id);
-        Task<string> VincularCobrador(Guid idOnibus, string nomeCompleto);
-        Task<string> VincularMotorista(Guid idOnibus, string nomeCompleto);
-        Task<string> VincularPassagem(Guid idOnibus, Guid idPassagem);
+        Task<OnibusDto> VincularCobrador(Guid idOnibus, string nomeCompleto);
+        Task<OnibusDto> VincularMotorista(Guid idOnibus, string nomeCompleto);
+        Task<OnibusDto> VincularPassagem(Guid idOnibus, Guid idPassagem);
     }
 }

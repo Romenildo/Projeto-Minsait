@@ -264,7 +264,8 @@ namespace ProjetoMinsait.Migrations
                 {
                     b.HasOne("ProjetoMinsait.Models.Passagem", "Passagem")
                         .WithMany("Passageiros")
-                        .HasForeignKey("PassagemId");
+                        .HasForeignKey("PassagemId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Passagem");
                 });
@@ -273,7 +274,8 @@ namespace ProjetoMinsait.Migrations
                 {
                     b.HasOne("ProjetoMinsait.Models.Onibus", "Onibus")
                         .WithOne("Passagem")
-                        .HasForeignKey("ProjetoMinsait.Models.Passagem", "OnibusId");
+                        .HasForeignKey("ProjetoMinsait.Models.Passagem", "OnibusId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Onibus");
                 });

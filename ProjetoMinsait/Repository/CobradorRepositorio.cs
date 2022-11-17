@@ -80,7 +80,7 @@ namespace ProjetoMinsait.Repository
 
         public async Task<Boolean> Deletar(Guid id)
         {
-            Cobrador cobradorBd = await _dbcontext.Cobradores.FirstOrDefaultAsync(x => x.Id == id);
+            Cobrador? cobradorBd = await _dbcontext.Cobradores.FirstOrDefaultAsync(x => x.Id == id);
 
             if (cobradorBd == null)
             {
